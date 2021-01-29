@@ -11,7 +11,13 @@ public class GizmosController : MonoBehaviour
 	public bool _isRight, _isLeft;
 	public GameObject Avater;
 
-	void OnMouseDown()
+
+    private void Awake()
+    {
+		GetComponent<Renderer>().material.SetColor("_Outline_Color", Color.blue);
+	}
+
+    void OnMouseDown()
 	{
 		if (transform.parent != null)
 			return;
@@ -19,6 +25,7 @@ public class GizmosController : MonoBehaviour
 
 		screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+		GetComponent<Renderer>().material.SetColor("_Outline_Color",Color.green);
 	}
 
 	void OnMouseDrag()
@@ -32,9 +39,12 @@ public class GizmosController : MonoBehaviour
 		transform.position = cursorPosition;
 		sendData();
 	}
+	void OnMouseUp()
+	{
+		GetComponent<Renderer>().material.SetColor("_Outline_Color", Color.blue);
+	}
 
-
-	void sendData()
+		void sendData()
     {
         if (_isRight)
         {

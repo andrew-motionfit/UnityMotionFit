@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a002c94a5d58948e98003c0d2f196e1e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - txtDebug: {instanceID: 0}
+  - uiPanel: {fileID: 1909629097719652, guid: 3e86700be571c71468308b117b38eed2, type: 3}
+  - txtSend: {instanceID: 0}
+  - txtReceive: {instanceID: 0}
+  - btnSend: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

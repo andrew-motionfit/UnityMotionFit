@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "370264988400",
+    "firebase_url": "https://motionfit-878e2-default-rtdb.firebaseio.com",
+    "project_id": "motionfit-878e2",
+    "storage_bucket": "motionfit-878e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370264988400:android:fe26cddd3be86213908035",
+        "android_client_info": {
+          "package_name": "com.gym.motionfit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "370264988400-3f0iv7v8fqu4tn2p62gpi6udlai7dpla.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJNT4y_cWiHBUcXKlqznRe1-cb0yhYCmU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "370264988400-3f0iv7v8fqu4tn2p62gpi6udlai7dpla.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "370264988400-e66mg4tjkf4ool5auneaamugbt06q9ne.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gym.motionfit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

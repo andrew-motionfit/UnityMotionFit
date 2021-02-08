@@ -1,105 +1,104 @@
 
 
-// VacuumShaders 2017
-// https://www.facebook.com/VacuumShaders
 
-Shader "Hidden/VacuumShaders/The Amazing Wireframe/Geometry Shader/Transparent/2 Sided/Diffuse Improved"
+
+
+Shader "Hidden/Amazing Assets/Wireframe Shader/Dynamic (SM5)/Geometry Shader/Transparent/2 Sided/Diffuse Improved"
 {
 	Properties
 	{
-		//Tag         
-		[V_WIRE_Tag] _V_WIRE_Tag("", float) = 0
+[WireframeCurvedWorldTitle] _CurvedWorldTitle("", Float) = 0
+//[CurvedWorldBendSettings] _CurvedWorldBendSettings("0|1|1", Vector) = (0, 0, 0, 0)
+		
 
 		//Rendering Options
-		[V_WIRE_RenderingOptions] _V_WIRE_RenderingOptions_PBREnumID("", float) = 0
+		[WireframeTitle] _Wireframe_Title_Rendering_Options("Rendering Options", float) = 0  
+		[WireframeRenderingOptions] _Wireframe_RenderingOptions_PBREnumID("", float) = 0
 
 
 		//Visual Options
-		[V_WIRE_Title] _V_WIRE_Title_V_Options("Default Visual Options", float) = 0
+		[WireframeTitle] _Wireframe_Title_V_Options("Default Visual Options", float) = 0
 
 		//Base
 		_Color("Color (RGB) Trans (A)", color) = (1, 1, 1, 1)
 
 		//Vertex Color
-		[V_WIRE_Toggle] _V_WIRE_VertexColor("Vertex Color", float) = 0
+		[Enum(Off,0,On,1)] _Wireframe_BaseVertexColor("Vertex Color", float) = 0
 
 		_Glossiness("Smoothness", Range(0,1)) = 0.5
 		_Metallic("Metallic", Range(0,1)) = 0.0
 
 		_MainTex("Base (RGB) Trans (A)", 2D) = "white"{}
-		[V_WIRE_UVScroll] _V_WIRE_MainTex_Scroll("    ", vector) = (0, 0, 0, 0)
+		[WireframeUVScroll] _Wireframe_MainTex_Scroll("", vector) = (0, 0, 0, 0)
 
 		//Bump 
-	    [V_WIRE_BumpPBR]  _V_WIRE_BumpEnumID ("", Float) = 0	
-		[HideInInspector] _V_WIRE_NormalScale ("", Float) = 1
-		[HideInInspector] _V_WIRE_NormalMap ("", 2D) = "bump" {}
+	    [WireframeBumpPBR]  _Wireframe_BumpEnumID ("", Float) = 0	
+		[HideInInspector] _Wireframe_NormalScale ("", Float) = 1
+		[HideInInspector] _Wireframe_NormalMap ("", 2D) = "bump" {}
 		  
 		//AO    
-		[V_WIRE_AoPBR]    _V_WIRE_Ao("", Float) = 0
-		[HideInInspector] _V_WIRE_AoStrength("", Range(0, 1)) = 1
-		[HideInInspector] _V_WIRE_AoMap("", 2D) = "white" {}
+		[WireframeAmbientOcclusion]    _Wireframe_AmbientOcclusion("", Float) = 0
+		[HideInInspector] _Wireframe_AmbientOcclusionStrength("", Range(0, 1)) = 1
+		[HideInInspector] _Wireframe_AmbientOcclusionMap("", 2D) = "white" {}
 
 
 
 		//Wire S Options  
-		[V_WIRE_Title] _V_WIRE_Title_S_Options("Wire Source Options", float) = 0  		
+		[WireframeTitle] _Wireframe_Title_S_Options("Wireframe Shader Options", float) = 0  		
 		
 		//Source
-		[V_WIRE_Source] _V_WIRE_Source_Options ("", float) = 0
-		[HideInInspector] _V_WIRE_SourceTex("", 2D) = "white"{}
-		[HideInInspector] _V_WIRE_SourceTex_Scroll("", vector) = (0, 0, 0, 0)
-
-		[HideInInspector] _V_WIRE_FixedSize("", float) = 0
-		[HideInInspector] _V_WIRE_Size("", Float) = 1
-		[Toggle(V_WIRE_TRY_QUAD_ON)] _V_WIRE_TryQuad("Try Quad", Float) = 0
+		_WireframeShader_Thickness("Thickness", Range(0, 1)) = 0.01
+		_WireframeShader_Smoothness("Smoothness", Range(0, 1)) = 0	
+		_WireframeShader_Diameter("Diameter", Range(0, 1)) = 1
+		[Toggle(WIREFRAME_NORMALIZE_EDGES_ON)] _Wireframe_NormalizeEdges("Normalize Edges", Float) = 0
+		[Toggle(WIREFRAME_TRY_QUAD_ON)] _Wireframe_TryQuad("Try Quad", Float) = 0
 
 		//Wire Options  
-		[V_WIRE_Title] _V_WIRE_Title_W_Options("Wire Visual Options", float) = 0  	
+		[WireframeHeader] _Wireframe_Title_W_Options("Base Options", float) = 0  	
 
-		_V_WIRE_Color("Color", color) = (0, 0, 0, 1)
-		_V_WIRE_WireTex("Color Texture (RGBA)", 2D) = "white"{}
-		[V_WIRE_UVScroll] _V_WIRE_WireTex_Scroll("    ", vector) = (0, 0, 0, 0)
-		[Enum(UV0,0,UV1,1)] _V_WIRE_WireTex_UVSet("    UV Set", float) = 0
+		_Wireframe_Color("Color (RGB) Trans (A)", color) = (1, 0, 0, 1)
+		[WireframePositiveFloat]_Wireframe_ColorEmissionStrength("Emission Strength", float) = 0
+		_Wireframe_ColorTexture("Color Texture (RGBA)", 2D) = "white"{}
+		[WireframeUVScroll] _Wireframe_ColorTexture_Scroll("", vector) = (0, 0, 0, 0)
+		
 
-		//Emission
-		[V_WIRE_PositiveFloat] _V_WIRE_EmissionStrength("Emission Strength", float) = 0
 
 		//Vertex Color
-		[V_WIRE_Toggle] _V_WIRE_WireVertexColor("Vertex Color", Float) = 0
+		[Enum(Off,0,On,1)] _Wireframe_WireVertexColor("Vertex Color", Float) = 0
 
 		//Light
-		[V_WIRE_IncludeLight] _V_WIRE_IncludeLightEnumID ("", float) = 0
+		[WireframeLightInteraction] _Wireframe_IncludeLightEnumID ("", float) = 0
 
 		//Improved Transparent Blend
-		[V_WIRE_ImprovedBlend] _V_WIRE_ImprovedBlendEnumID("", int) = 0
+		[WireframeImprovedBlend] _Wireframe_ImprovedBlendEnumID("", int) = 0
 
 		//Transparency          
-		[V_WIRE_Title]		  _V_WIRE_Transparency_M_Options("Wire Transparency Options", float) = 0
-		[V_WIRE_Transparency] _V_WIRE_TransparencyEnumID("", float) = 0
-		[HideInInspector]	  _V_WIRE_TransparentTex_Invert("    ", float) = 0
-		[HideInInspector]	  _V_WIRE_TransparentTex_Alpha_Offset("    ", Range(-1, 1)) = 0
+		[WireframeHeader]		  _Wireframe_Transparency_M_Options("Transparency Options", float) = 0
+		[WireframeTextureTransparency] _Wireframe_TransparencyEnumID("", float) = 0
+		[HideInInspector]	  _Wireframe_TransparentTex_Invert("    ", float) = 0
+		[HideInInspector]	  _Wireframe_TransparentTex_Alpha_Offset("    ", Range(-1, 1)) = 0
 
 		//Fresnel
-		[V_WIRE_Fresnel]  _V_WIRE_FresnelEnumID("Fresnel", Float) = 0
-		[HideInInspector] _V_WIRE_FresnelInvert("", float) = 0
-		[HideInInspector] _V_WIRE_FresnelBias("", Range(-1, 1)) = 0
-		[HideInInspector] _V_WIRE_FresnelPow("", Range(1, 16)) = 1
+		[WireframeFresnel]  _Wireframe_FresnelEnumID("Fresnel", Float) = 0
+		[HideInInspector] _Wireframe_FresnelInvert("", float) = 0
+		[HideInInspector] _Wireframe_FresnelBias("", Range(-1, 1)) = 0
+		[HideInInspector] _Wireframe_FresnelPow("", Range(1, 16)) = 1
 
 		//Distance Fade  
-		[V_WIRE_DistanceFade]  _V_WIRE_DistanceFade("Distance Fade", Float) = 0
-		[HideInInspector] _V_WIRE_DistanceFadeStart("", Float) = 5
-		[HideInInspector] _V_WIRE_DistanceFadeEnd("", Float) = 10
+		[WireframeDistanceFade]  _Wireframe_DistanceFade("Distance Fade", Float) = 0
+		[HideInInspector] _Wireframe_DistanceFadeStart("", Float) = 5
+		[HideInInspector] _Wireframe_DistanceFadeEnd("", Float) = 10
 
 		//Dynamic Mask
-		[V_WIRE_Title]		 _V_WIRE_Title_M_Options("Dynamic Mask Options", float) = 0
-		[V_WIRE_DynamicMask] _V_WIRE_DynamicMaskEnumID("", float) = 0
-		[HideInInspector]    _V_WIRE_DynamicMaskInvert("", float) = -1
-		[HideInInspector]    _V_WIRE_DynamicMaskEffectsBaseTexEnumID("", int) = 0
-		[HideInInspector]    _V_WIRE_DynamicMaskEffectsBaseTexInvert("", float) = 0
-		[HideInInspector]    _V_WIRE_DynamicMaskType("", Float) = 1
-		[HideInInspector]    _V_WIRE_DynamicMaskSmooth("", Range(0, 1)) = 1
+		[WireframeHeader]		 _Wireframe_Title_M_Options("Dynamic Mask Options", float) = 0
+		[WireframeDynamicMask] _Wireframe_DynamicMaskEnumID("", float) = 0
+		[HideInInspector]    _Wireframe_DynamicMaskInvert("", float) = 0
+		[HideInInspector]    _Wireframe_DynamicMaskEffectsBaseTexEnumID("", int) = 0
+		[HideInInspector]    _Wireframe_DynamicMaskEffectsBaseTexInvert("", float) = 0
+		[HideInInspector]    _Wireframe_DynamicMaskType("", Float) = 1
+		[HideInInspector][PositiveFloatDrawer]    _Wireframe_DynamicMaskEdgeSmooth("", float) = 0
 
-			[V_WIRE_Title]		 _V_WIRE_Title_UAR_Options("Unity Advanced Rendering Options", float) = 0
+			[WireframeTitle]		 _Wireframe_Title_UAR_Options("Unity Advanced Rendering Options", float) = 0
 	}
 
 		SubShader
@@ -175,26 +174,33 @@ Shader "Hidden/VacuumShaders/The Amazing Wireframe/Geometry Shader/Transparent/2
 		//#pragma target 3.0
 
 
+//#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+//#define CURVEDWORLD_BEND_ID_1
+//#pragma shader_feature_local CURVEDWORLD_DISABLED_ON
+//#pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
+//#include "Assets/Amazing Assets/Curved World/Shaders/Core/CurvedWorldTransform.cginc"
 
 
-		#pragma shader_feature V_WIRE_LIGHT_OFF V_WIRE_LIGHT_ON
+
+		#pragma shader_feature_local WIREFRAME_LIGHT_ATTENTION_ON
 		#ifdef UNITY_PASS_DEFERRED
-		#ifndef V_WIRE_LIGHT_ON
-		#define V_WIRE_LIGHT_ON
+		#ifndef WIREFRAME_LIGHT_ATTENTION_ON
+		#define WIREFRAME_LIGHT_ATTENTION_ON
 		#endif
 		#endif
-		#pragma shader_feature V_WIRE_FRESNEL_OFF V_WIRE_FRESNEL_ON
-		#pragma shader_feature V_WIRE_TRANSPARENCY_OFF V_WIRE_TRANSPARENCY_ON
+		#pragma shader_feature_local WIREFRAME_FRESNEL_ON
+		#pragma shader_feature_local WIREFRAME_DISTANCE_FADE_ON	
+		#pragma shader_feature_local WIREFRAME_COLOR_TEXTURE_TRANSPARENCY_ON
 
-		#pragma shader_feature V_WIRE_DYNAMIC_MASK_OFF V_WIRE_DYNAMI_MASK_PLANE V_WIRE_DYNAMIC_MASK_SPHERE V_WIRE_DYNAMIC_MASK_BOX
-		#pragma shader_feature V_WIRE_DYNAMIC_MASK_BASE_TEX_OFF V_WIRE_DYNAMIC_MASK_BASE_TEX_ON
+		#pragma shader_feature_local _ WIREFRAME_DYNAMIC_MASK_PLANE WIREFRAME_DYNAMIC_MASK_SPHERE WIREFRAME_DYNAMIC_MASK_BOX
+		#pragma shader_feature_local WIREFRAME_DYNAMIC_MASK_BASE_TEX_ON
 		
 
-#define V_WIRE_PBR
-#define V_WIRE_TRANSPARENT
-#define V_WIRE_NO 
+#define WIREFRAME_PHYSICALLY_BASED
+#define WIREFRAME_TRANSPARENT
+#define WIREFRAME_NO 
 
-#include "../cginc/Wireframe_PBR.cginc" 
+#include "../cginc/WireframePhysicallyBased.cginc" 
 
 
 		// vertex-to-fragment interpolation data
@@ -249,7 +255,7 @@ Shader "Hidden/VacuumShaders/The Amazing Wireframe/Geometry Shader/Transparent/2
 		vert(v, customInputData);
 		o.custompack0.xyzw = customInputData.texcoord;
 		o.custompack1.xyzw = customInputData.texcoord1;
-		o.custompack2.xyzw = customInputData.mass;
+		o.custompack2.xyzw = customInputData.wireframeShaderTriangleMass;
 		o.pos = UnityObjectToClipPos(v.vertex);
 		float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
 		fixed3 worldNormal = UnityObjectToWorldNormal(v.normal);
@@ -299,11 +305,11 @@ Shader "Hidden/VacuumShaders/The Amazing Wireframe/Geometry Shader/Transparent/2
 	surfIN.texcoord.x = 1.0;
 	surfIN.texcoord1.x = 1.0;
 	surfIN.worldPos.x = 1.0;
-	surfIN.mass.x = 1.0;
+	surfIN.wireframeShaderTriangleMass.x = 1.0;
 	surfIN.color.x = 1.0;
 	surfIN.texcoord = IN.custompack0.xyzw;
 	surfIN.texcoord1 = IN.custompack1.xyzw;
-	surfIN.mass = IN.custompack2.xyzw;
+	surfIN.wireframeShaderTriangleMass = IN.custompack2.xyzw;
 	float3 worldPos = IN.worldPos;
 	surfIN.worldPos = worldPos;
 
@@ -382,7 +388,7 @@ giInput.ambient.rgb = 0.0;
 	// realtime lighting: call lighting function
 	c += LightingStandard(o, worldViewDir, gi);
 	
-	#ifdef V_WIRE_LIGHT_ON
+	#ifdef WIREFRAME_LIGHT_ATTENTION_ON
 		c.rgb += o.Emission;
 	#else
 		WireFinalColor(surfIN, o, c);
@@ -452,26 +458,33 @@ giInput.ambient.rgb = 0.0;
 		//#pragma target 3.0
 
 
+//#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+//#define CURVEDWORLD_BEND_ID_1
+//#pragma shader_feature_local CURVEDWORLD_DISABLED_ON
+//#pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
+//#include "Assets/Amazing Assets/Curved World/Shaders/Core/CurvedWorldTransform.cginc"
 
 
-		#pragma shader_feature V_WIRE_LIGHT_OFF V_WIRE_LIGHT_ON
+
+		#pragma shader_feature_local WIREFRAME_LIGHT_ATTENTION_ON
 		#ifdef UNITY_PASS_DEFERRED
-		#ifndef V_WIRE_LIGHT_ON
-		#define V_WIRE_LIGHT_ON
+		#ifndef WIREFRAME_LIGHT_ATTENTION_ON
+		#define WIREFRAME_LIGHT_ATTENTION_ON
 		#endif
 		#endif
-		#pragma shader_feature V_WIRE_FRESNEL_OFF V_WIRE_FRESNEL_ON
-		#pragma shader_feature V_WIRE_TRANSPARENCY_OFF V_WIRE_TRANSPARENCY_ON
+		#pragma shader_feature_local WIREFRAME_FRESNEL_ON
+		#pragma shader_feature_local WIREFRAME_DISTANCE_FADE_ON	
+		#pragma shader_feature_local WIREFRAME_COLOR_TEXTURE_TRANSPARENCY_ON
 
-		#pragma shader_feature V_WIRE_DYNAMIC_MASK_OFF V_WIRE_DYNAMI_MASK_PLANE V_WIRE_DYNAMIC_MASK_SPHERE V_WIRE_DYNAMIC_MASK_BOX
-		#pragma shader_feature V_WIRE_DYNAMIC_MASK_BASE_TEX_OFF V_WIRE_DYNAMIC_MASK_BASE_TEX_ON
+		#pragma shader_feature_local _ WIREFRAME_DYNAMIC_MASK_PLANE WIREFRAME_DYNAMIC_MASK_SPHERE WIREFRAME_DYNAMIC_MASK_BOX
+		#pragma shader_feature_local WIREFRAME_DYNAMIC_MASK_BASE_TEX_ON
 		
 
-#define V_WIRE_PBR
-#define V_WIRE_TRANSPARENT
-#define V_WIRE_NO 
+#define WIREFRAME_PHYSICALLY_BASED
+#define WIREFRAME_TRANSPARENT
+#define WIREFRAME_NO 
 
-#include "../cginc/Wireframe_PBR.cginc" 
+#include "../cginc/WireframePhysicallyBased.cginc" 
 
 
 		// vertex-to-fragment interpolation data
@@ -496,7 +509,7 @@ giInput.ambient.rgb = 0.0;
 		vert(v, customInputData);
 		o.custompack0.xyzw = customInputData.texcoord;
 		o.custompack1.xyzw = customInputData.texcoord1;
-		o.custompack2.xyzw = customInputData.mass;
+		o.custompack2.xyzw = customInputData.wireframeShaderTriangleMass;
 		o.pos = UnityObjectToClipPos(v.vertex);
 		float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
 		fixed3 worldNormal = UnityObjectToWorldNormal(v.normal);
@@ -515,11 +528,11 @@ giInput.ambient.rgb = 0.0;
 	surfIN.texcoord.x = 1.0;
 	surfIN.texcoord1.x = 1.0;
 	surfIN.worldPos.x = 1.0;
-	surfIN.mass.x = 1.0;
+	surfIN.wireframeShaderTriangleMass.x = 1.0;
 	surfIN.color.x = 1.0;
 	surfIN.texcoord = IN.custompack0.xyzw;
 	surfIN.texcoord1 = IN.custompack1.xyzw;
-	surfIN.mass = IN.custompack2.xyzw;
+	surfIN.wireframeShaderTriangleMass = IN.custompack2.xyzw;
 	float3 worldPos = IN.worldPos;
 	surfIN.worldPos = worldPos;
 
@@ -587,7 +600,7 @@ giInput.ambient.rgb = 0.0;
 #pragma vertex vert_surf
 #pragma geometry geom
 #pragma fragment frag_surf
-#include "../cginc/Wireframe_GS_Platform.cginc"
+#include "../cginc/WireframeGeometryShaderPlatform.cginc"
 #pragma multi_compile_fog
 #pragma multi_compile_fwdbasealpha noshadow
 #include "HLSLSupport.cginc"
@@ -632,26 +645,34 @@ giInput.ambient.rgb = 0.0;
 		// Use shader model 3.0 target, to get nicer looking lighting
 		//#pragma target 3.0
 
+//#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+//#define CURVEDWORLD_BEND_ID_1
+//#pragma shader_feature_local CURVEDWORLD_DISABLED_ON
+//#pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
+//#include "Assets/Amazing Assets/Curved World/Shaders/Core/CurvedWorldTransform.cginc"
 
-		#pragma shader_feature V_WIRE_LIGHT_OFF V_WIRE_LIGHT_ON
+
+		#pragma shader_feature_local WIREFRAME_LIGHT_ATTENTION_ON
 		#ifdef UNITY_PASS_DEFERRED
-		#ifndef V_WIRE_LIGHT_ON
-		#define V_WIRE_LIGHT_ON
+		#ifndef WIREFRAME_LIGHT_ATTENTION_ON
+		#define WIREFRAME_LIGHT_ATTENTION_ON
 		#endif
 		#endif
-		#pragma shader_feature V_WIRE_FRESNEL_OFF V_WIRE_FRESNEL_ON
-		#pragma shader_feature V_WIRE_TRANSPARENCY_OFF V_WIRE_TRANSPARENCY_ON
+		#pragma shader_feature_local WIREFRAME_FRESNEL_ON
+		#pragma shader_feature_local WIREFRAME_DISTANCE_FADE_ON	
+		#pragma shader_feature_local WIREFRAME_COLOR_TEXTURE_TRANSPARENCY_ON
 
-		#pragma shader_feature V_WIRE_DYNAMIC_MASK_OFF V_WIRE_DYNAMI_MASK_PLANE V_WIRE_DYNAMIC_MASK_SPHERE V_WIRE_DYNAMIC_MASK_BOX
+		#pragma shader_feature_local _ WIREFRAME_DYNAMIC_MASK_PLANE WIREFRAME_DYNAMIC_MASK_SPHERE WIREFRAME_DYNAMIC_MASK_BOX
 		
-		#pragma shader_feature	V_WIRE_TRY_QUAD_OFF V_WIRE_TRY_QUAD_ON
+		#pragma shader_feature_local WIREFRAME_NORMALIZE_EDGES_ON
+		#pragma shader_feature_local WIREFRAME_TRY_QUAD_ON
 
-#define V_WIRE_PBR
-#define V_WIRE_TRANSPARENT
-#define V_WIRE_NO_COLOR_BLACK
-#define V_WIRE_SAME_COLOR
+#define WIREFRAME_PHYSICALLY_BASED
+#define WIREFRAME_TRANSPARENT
+#define WIREFRAME_NO_COLOR_BLACK
+#define WIREFRAME_SAME_COLOR
 
-#include "../cginc/Wireframe_PBR.cginc" 
+#include "../cginc/WireframePhysicallyBased.cginc" 
 
 
 		// vertex-to-fragment interpolation data
@@ -701,7 +722,7 @@ giInput.ambient.rgb = 0.0;
 #endif
 
 
-#include "../cginc/Wireframe_GS.cginc"
+#include "../cginc/WireframeGeometryShader.cginc"
 
 
 	// vertex shader
@@ -712,7 +733,7 @@ giInput.ambient.rgb = 0.0;
 		vert(v, customInputData);
 		o.custompack0.xyzw = customInputData.texcoord;
 		o.custompack1.xyzw = customInputData.texcoord1;
-		o.custompack2.xyzw = customInputData.mass;
+		o.custompack2.xyzw = customInputData.wireframeShaderTriangleMass;
 		o.objectPos = v.vertex.xyz;
 
 		o.pos = UnityObjectToClipPos(v.vertex);
@@ -764,11 +785,11 @@ giInput.ambient.rgb = 0.0;
 	surfIN.texcoord.x = 1.0;
 	surfIN.texcoord1.x = 1.0;
 	surfIN.worldPos.x = 1.0;
-	surfIN.mass.x = 1.0;
+	surfIN.wireframeShaderTriangleMass.x = 1.0;
 	surfIN.color.x = 1.0;
 	surfIN.texcoord = IN.custompack0.xyzw;
 	surfIN.texcoord1 = IN.custompack1.xyzw;
-	surfIN.mass = IN.custompack2.xyzw;
+	surfIN.wireframeShaderTriangleMass = IN.custompack2.xyzw;
 	float3 worldPos = IN.worldPos;
 	surfIN.worldPos = worldPos;
 
@@ -848,7 +869,7 @@ giInput.ambient.rgb = 0.0;
 	// realtime lighting: call lighting function
 	c += LightingStandard(o, worldViewDir, gi);
 	
-	#ifdef V_WIRE_LIGHT_ON
+	#ifdef WIREFRAME_LIGHT_ATTENTION_ON
 		c.rgb += o.Emission;
 
 		#if defined(FOG_LINEAR) || defined(FOG_EXP) || defined(FOG_EXP2)
@@ -878,7 +899,7 @@ giInput.ambient.rgb = 0.0;
 #pragma vertex vert_surf
 #pragma geometry geom
 #pragma fragment frag_surf
-#include "../cginc/Wireframe_GS_Platform.cginc"
+#include "../cginc/WireframeGeometryShaderPlatform.cginc"
 #pragma multi_compile_fog
 #pragma multi_compile_fwdadd_fullshadows noshadow
 #include "HLSLSupport.cginc"
@@ -924,25 +945,33 @@ giInput.ambient.rgb = 0.0;
 		//#pragma target 3.0
 
 
-		#pragma shader_feature V_WIRE_LIGHT_OFF V_WIRE_LIGHT_ON
+//#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+//#define CURVEDWORLD_BEND_ID_1
+//#pragma shader_feature_local CURVEDWORLD_DISABLED_ON
+//#pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
+//#include "Assets/Amazing Assets/Curved World/Shaders/Core/CurvedWorldTransform.cginc"
+
+		#pragma shader_feature_local WIREFRAME_LIGHT_ATTENTION_ON
 		#ifdef UNITY_PASS_DEFERRED
-		#ifndef V_WIRE_LIGHT_ON
-		#define V_WIRE_LIGHT_ON
+		#ifndef WIREFRAME_LIGHT_ATTENTION_ON
+		#define WIREFRAME_LIGHT_ATTENTION_ON
 		#endif
 		#endif
-		#pragma shader_feature V_WIRE_FRESNEL_OFF V_WIRE_FRESNEL_ON
-		#pragma shader_feature V_WIRE_TRANSPARENCY_OFF V_WIRE_TRANSPARENCY_ON
+		#pragma shader_feature_local WIREFRAME_FRESNEL_ON
+		#pragma shader_feature_local WIREFRAME_DISTANCE_FADE_ON	
+		#pragma shader_feature_local WIREFRAME_COLOR_TEXTURE_TRANSPARENCY_ON
 
-		#pragma shader_feature V_WIRE_DYNAMIC_MASK_OFF V_WIRE_DYNAMI_MASK_PLANE V_WIRE_DYNAMIC_MASK_SPHERE V_WIRE_DYNAMIC_MASK_BOX
+		#pragma shader_feature_local _ WIREFRAME_DYNAMIC_MASK_PLANE WIREFRAME_DYNAMIC_MASK_SPHERE WIREFRAME_DYNAMIC_MASK_BOX
 		
-		#pragma shader_feature	V_WIRE_TRY_QUAD_OFF V_WIRE_TRY_QUAD_ON
+		#pragma shader_feature_local WIREFRAME_NORMALIZE_EDGES_ON
+		#pragma shader_feature_local WIREFRAME_TRY_QUAD_ON
 
-#define V_WIRE_PBR
-#define V_WIRE_TRANSPARENT
-#define V_WIRE_NO_COLOR_BLACK
-#define V_WIRE_SAME_COLOR
+#define WIREFRAME_PHYSICALLY_BASED
+#define WIREFRAME_TRANSPARENT
+#define WIREFRAME_NO_COLOR_BLACK
+#define WIREFRAME_SAME_COLOR
 
-#include "../cginc/Wireframe_PBR.cginc" 
+#include "../cginc/WireframePhysicallyBased.cginc" 
 
 
 		// vertex-to-fragment interpolation data
@@ -962,7 +991,7 @@ giInput.ambient.rgb = 0.0;
 	};
 
 
-#include "../cginc/Wireframe_GS.cginc"
+#include "../cginc/WireframeGeometryShader.cginc"
 
 
 	// vertex shader
@@ -973,7 +1002,7 @@ giInput.ambient.rgb = 0.0;
 		vert(v, customInputData);
 		o.custompack0.xyzw = customInputData.texcoord;
 		o.custompack1.xyzw = customInputData.texcoord1;
-		o.custompack2.xyzw = customInputData.mass;
+		o.custompack2.xyzw = customInputData.wireframeShaderTriangleMass;
 		o.objectPos = v.vertex.xyz;
 
 		o.pos = UnityObjectToClipPos(v.vertex);
@@ -994,11 +1023,11 @@ giInput.ambient.rgb = 0.0;
 	surfIN.texcoord.x = 1.0;
 	surfIN.texcoord1.x = 1.0;
 	surfIN.worldPos.x = 1.0;
-	surfIN.mass.x = 1.0;
+	surfIN.wireframeShaderTriangleMass.x = 1.0;
 	surfIN.color.x = 1.0;
 	surfIN.texcoord = IN.custompack0.xyzw;
 	surfIN.texcoord1 = IN.custompack1.xyzw;
-	surfIN.mass = IN.custompack2.xyzw;
+	surfIN.wireframeShaderTriangleMass = IN.custompack2.xyzw;
 	float3 worldPos = IN.worldPos;
 	surfIN.worldPos = worldPos;
 
@@ -1119,16 +1148,22 @@ giInput.ambient.rgb = 0.0;
 
 
 
+//#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+//#define CURVEDWORLD_BEND_ID_1
+//#pragma shader_feature_local CURVEDWORLD_DISABLED_ON
+//#pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
+//#include "Assets/Amazing Assets/Curved World/Shaders/Core/CurvedWorldTransform.cginc"
 
-		#pragma shader_feature V_WIRE_DYNAMIC_MASK_OFF V_WIRE_DYNAMI_MASK_PLANE V_WIRE_DYNAMIC_MASK_SPHERE V_WIRE_DYNAMIC_MASK_BOX
-		#pragma shader_feature V_WIRE_DYNAMIC_MASK_BASE_TEX_OFF V_WIRE_DYNAMIC_MASK_BASE_TEX_ON
+
+		#pragma shader_feature_local _ WIREFRAME_DYNAMIC_MASK_PLANE WIREFRAME_DYNAMIC_MASK_SPHERE WIREFRAME_DYNAMIC_MASK_BOX
+		#pragma shader_feature_local WIREFRAME_DYNAMIC_MASK_BASE_TEX_ON
 
 		
-#define V_WIRE_PBR
-#define V_WIRE_TRANSPARENT
-#define V_WIRE_NO 
+#define WIREFRAME_PHYSICALLY_BASED
+#define WIREFRAME_TRANSPARENT
+#define WIREFRAME_NO 
 
-#include "../cginc/Wireframe_PBR.cginc" 
+#include "../cginc/WireframePhysicallyBased.cginc" 
 
 
 		// vertex-to-fragment interpolation data
@@ -1183,7 +1218,7 @@ giInput.ambient.rgb = 0.0;
 		vert(v, customInputData);
 		o.custompack0.xyzw = customInputData.texcoord;
 		o.custompack1.xyzw = customInputData.texcoord1;
-		o.custompack2.xyzw = customInputData.mass;
+		o.custompack2.xyzw = customInputData.wireframeShaderTriangleMass;
 		o.pos = UnityObjectToClipPos(v.vertex);
 		float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
 		fixed3 worldNormal = UnityObjectToWorldNormal(v.normal);
@@ -1233,11 +1268,11 @@ giInput.ambient.rgb = 0.0;
 	surfIN.texcoord.x = 1.0;
 	surfIN.texcoord1.x = 1.0;
 	surfIN.worldPos.x = 1.0;
-	surfIN.mass.x = 1.0;
+	surfIN.wireframeShaderTriangleMass.x = 1.0;
 	surfIN.color.x = 1.0;
 	surfIN.texcoord = IN.custompack0.xyzw;
 	surfIN.texcoord1 = IN.custompack1.xyzw;
-	surfIN.mass = IN.custompack2.xyzw;
+	surfIN.wireframeShaderTriangleMass = IN.custompack2.xyzw;
 	float3 worldPos = IN.worldPos;
 	surfIN.worldPos = worldPos;
 
@@ -1316,7 +1351,7 @@ giInput.ambient.rgb = 0.0;
 	// realtime lighting: call lighting function
 	c += LightingStandard(o, worldViewDir, gi);
 	
-	#ifdef V_WIRE_LIGHT_ON
+	#ifdef WIREFRAME_LIGHT_ATTENTION_ON
 		c.rgb += o.Emission;
 	#else
 		WireFinalColor(surfIN, o, c);
@@ -1387,16 +1422,22 @@ giInput.ambient.rgb = 0.0;
 
 
 
+//#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+//#define CURVEDWORLD_BEND_ID_1
+//#pragma shader_feature_local CURVEDWORLD_DISABLED_ON
+//#pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
+//#include "Assets/Amazing Assets/Curved World/Shaders/Core/CurvedWorldTransform.cginc"
 
-		#pragma shader_feature V_WIRE_DYNAMIC_MASK_OFF V_WIRE_DYNAMI_MASK_PLANE V_WIRE_DYNAMIC_MASK_SPHERE V_WIRE_DYNAMIC_MASK_BOX
-		#pragma shader_feature V_WIRE_DYNAMIC_MASK_BASE_TEX_OFF V_WIRE_DYNAMIC_MASK_BASE_TEX_ON
+
+		#pragma shader_feature_local _ WIREFRAME_DYNAMIC_MASK_PLANE WIREFRAME_DYNAMIC_MASK_SPHERE WIREFRAME_DYNAMIC_MASK_BOX
+		#pragma shader_feature_local WIREFRAME_DYNAMIC_MASK_BASE_TEX_ON
 
 		
-#define V_WIRE_PBR
-#define V_WIRE_TRANSPARENT
-#define V_WIRE_NO 
+#define WIREFRAME_PHYSICALLY_BASED
+#define WIREFRAME_TRANSPARENT
+#define WIREFRAME_NO 
 
-#include "../cginc/Wireframe_PBR.cginc" 
+#include "../cginc/WireframePhysicallyBased.cginc" 
 
 
 		// vertex-to-fragment interpolation data
@@ -1421,7 +1462,7 @@ giInput.ambient.rgb = 0.0;
 		vert(v, customInputData);
 		o.custompack0.xyzw = customInputData.texcoord;
 		o.custompack1.xyzw = customInputData.texcoord1;
-		o.custompack2.xyzw = customInputData.mass;
+		o.custompack2.xyzw = customInputData.wireframeShaderTriangleMass;
 		o.pos = UnityObjectToClipPos(v.vertex);
 		float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
 		fixed3 worldNormal = UnityObjectToWorldNormal(v.normal);
@@ -1440,11 +1481,11 @@ giInput.ambient.rgb = 0.0;
 	surfIN.texcoord.x = 1.0;
 	surfIN.texcoord1.x = 1.0;
 	surfIN.worldPos.x = 1.0;
-	surfIN.mass.x = 1.0;
+	surfIN.wireframeShaderTriangleMass.x = 1.0;
 	surfIN.color.x = 1.0;
 	surfIN.texcoord = IN.custompack0.xyzw;
 	surfIN.texcoord1 = IN.custompack1.xyzw;
-	surfIN.mass = IN.custompack2.xyzw;
+	surfIN.wireframeShaderTriangleMass = IN.custompack2.xyzw;
 	float3 worldPos = IN.worldPos;
 	surfIN.worldPos = worldPos;
 
@@ -1512,7 +1553,7 @@ giInput.ambient.rgb = 0.0;
 #pragma vertex vert_surf
 #pragma geometry geom
 #pragma fragment frag_surf
-#include "../cginc/Wireframe_GS_Platform.cginc"
+#include "../cginc/WireframeGeometryShaderPlatform.cginc"
 #pragma multi_compile_fog
 #pragma multi_compile_fwdbasealpha noshadow
 #include "HLSLSupport.cginc"
@@ -1557,26 +1598,34 @@ giInput.ambient.rgb = 0.0;
 		// Use shader model 3.0 target, to get nicer looking lighting
 		//#pragma target 3.0
 
+//#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+//#define CURVEDWORLD_BEND_ID_1
+//#pragma shader_feature_local CURVEDWORLD_DISABLED_ON
+//#pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
+//#include "Assets/Amazing Assets/Curved World/Shaders/Core/CurvedWorldTransform.cginc"
 
-		#pragma shader_feature V_WIRE_LIGHT_OFF V_WIRE_LIGHT_ON
+
+		#pragma shader_feature_local WIREFRAME_LIGHT_ATTENTION_ON
 		#ifdef UNITY_PASS_DEFERRED
-		#ifndef V_WIRE_LIGHT_ON
-		#define V_WIRE_LIGHT_ON
+		#ifndef WIREFRAME_LIGHT_ATTENTION_ON
+		#define WIREFRAME_LIGHT_ATTENTION_ON
 		#endif
 		#endif
-		#pragma shader_feature V_WIRE_FRESNEL_OFF V_WIRE_FRESNEL_ON
-		#pragma shader_feature V_WIRE_TRANSPARENCY_OFF V_WIRE_TRANSPARENCY_ON
+		#pragma shader_feature_local WIREFRAME_FRESNEL_ON
+		#pragma shader_feature_local WIREFRAME_DISTANCE_FADE_ON	
+		#pragma shader_feature_local WIREFRAME_COLOR_TEXTURE_TRANSPARENCY_ON
 
-		#pragma shader_feature V_WIRE_DYNAMIC_MASK_OFF V_WIRE_DYNAMI_MASK_PLANE V_WIRE_DYNAMIC_MASK_SPHERE V_WIRE_DYNAMIC_MASK_BOX
+		#pragma shader_feature_local _ WIREFRAME_DYNAMIC_MASK_PLANE WIREFRAME_DYNAMIC_MASK_SPHERE WIREFRAME_DYNAMIC_MASK_BOX
 		
-		#pragma shader_feature	V_WIRE_TRY_QUAD_OFF V_WIRE_TRY_QUAD_ON
+		#pragma shader_feature_local WIREFRAME_NORMALIZE_EDGES_ON
+		#pragma shader_feature_local WIREFRAME_TRY_QUAD_ON
 
-#define V_WIRE_PBR
-#define V_WIRE_TRANSPARENT
-#define V_WIRE_NO_COLOR_BLACK
-#define V_WIRE_SAME_COLOR
+#define WIREFRAME_PHYSICALLY_BASED
+#define WIREFRAME_TRANSPARENT
+#define WIREFRAME_NO_COLOR_BLACK
+#define WIREFRAME_SAME_COLOR
 
-#include "../cginc/Wireframe_PBR.cginc" 
+#include "../cginc/WireframePhysicallyBased.cginc" 
 
 
 		// vertex-to-fragment interpolation data
@@ -1626,7 +1675,7 @@ giInput.ambient.rgb = 0.0;
 #endif
 
 
-#include "../cginc/Wireframe_GS.cginc"
+#include "../cginc/WireframeGeometryShader.cginc"
 
 
 	// vertex shader
@@ -1637,7 +1686,7 @@ giInput.ambient.rgb = 0.0;
 		vert(v, customInputData);
 		o.custompack0.xyzw = customInputData.texcoord;
 		o.custompack1.xyzw = customInputData.texcoord1;
-		o.custompack2.xyzw = customInputData.mass;
+		o.custompack2.xyzw = customInputData.wireframeShaderTriangleMass;
 		o.objectPos = v.vertex.xyz;
 
 		o.pos = UnityObjectToClipPos(v.vertex);
@@ -1689,11 +1738,11 @@ giInput.ambient.rgb = 0.0;
 	surfIN.texcoord.x = 1.0;
 	surfIN.texcoord1.x = 1.0;
 	surfIN.worldPos.x = 1.0;
-	surfIN.mass.x = 1.0;
+	surfIN.wireframeShaderTriangleMass.x = 1.0;
 	surfIN.color.x = 1.0;
 	surfIN.texcoord = IN.custompack0.xyzw;
 	surfIN.texcoord1 = IN.custompack1.xyzw;
-	surfIN.mass = IN.custompack2.xyzw;
+	surfIN.wireframeShaderTriangleMass = IN.custompack2.xyzw;
 	float3 worldPos = IN.worldPos;
 	surfIN.worldPos = worldPos;
 
@@ -1773,7 +1822,7 @@ giInput.ambient.rgb = 0.0;
 	// realtime lighting: call lighting function
 	c += LightingStandard(o, worldViewDir, gi);
 	
-	#ifdef V_WIRE_LIGHT_ON
+	#ifdef WIREFRAME_LIGHT_ATTENTION_ON
 		c.rgb += o.Emission;
 
 		#if defined(FOG_LINEAR) || defined(FOG_EXP) || defined(FOG_EXP2)
@@ -1803,7 +1852,7 @@ giInput.ambient.rgb = 0.0;
 #pragma vertex vert_surf
 #pragma geometry geom
 #pragma fragment frag_surf
-#include "../cginc/Wireframe_GS_Platform.cginc"
+#include "../cginc/WireframeGeometryShaderPlatform.cginc"
 #pragma multi_compile_fog
 #pragma multi_compile_fwdadd_fullshadows noshadow
 #include "HLSLSupport.cginc"
@@ -1849,25 +1898,33 @@ giInput.ambient.rgb = 0.0;
 		//#pragma target 3.0
 
 
-		#pragma shader_feature V_WIRE_LIGHT_OFF V_WIRE_LIGHT_ON
+//#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+//#define CURVEDWORLD_BEND_ID_1
+//#pragma shader_feature_local CURVEDWORLD_DISABLED_ON
+//#pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
+//#include "Assets/Amazing Assets/Curved World/Shaders/Core/CurvedWorldTransform.cginc"
+
+		#pragma shader_feature_local WIREFRAME_LIGHT_ATTENTION_ON
 		#ifdef UNITY_PASS_DEFERRED
-		#ifndef V_WIRE_LIGHT_ON
-		#define V_WIRE_LIGHT_ON
+		#ifndef WIREFRAME_LIGHT_ATTENTION_ON
+		#define WIREFRAME_LIGHT_ATTENTION_ON
 		#endif
 		#endif
-		#pragma shader_feature V_WIRE_FRESNEL_OFF V_WIRE_FRESNEL_ON
-		#pragma shader_feature V_WIRE_TRANSPARENCY_OFF V_WIRE_TRANSPARENCY_ON
+		#pragma shader_feature_local WIREFRAME_FRESNEL_ON
+		#pragma shader_feature_local WIREFRAME_DISTANCE_FADE_ON	
+		#pragma shader_feature_local WIREFRAME_COLOR_TEXTURE_TRANSPARENCY_ON
 
-		#pragma shader_feature V_WIRE_DYNAMIC_MASK_OFF V_WIRE_DYNAMI_MASK_PLANE V_WIRE_DYNAMIC_MASK_SPHERE V_WIRE_DYNAMIC_MASK_BOX
+		#pragma shader_feature_local _ WIREFRAME_DYNAMIC_MASK_PLANE WIREFRAME_DYNAMIC_MASK_SPHERE WIREFRAME_DYNAMIC_MASK_BOX
 		
-		#pragma shader_feature	V_WIRE_TRY_QUAD_OFF V_WIRE_TRY_QUAD_ON
+		#pragma shader_feature_local WIREFRAME_NORMALIZE_EDGES_ON
+		#pragma shader_feature_local WIREFRAME_TRY_QUAD_ON
 
-#define V_WIRE_PBR
-#define V_WIRE_TRANSPARENT
-#define V_WIRE_NO_COLOR_BLACK
-#define V_WIRE_SAME_COLOR
+#define WIREFRAME_PHYSICALLY_BASED
+#define WIREFRAME_TRANSPARENT
+#define WIREFRAME_NO_COLOR_BLACK
+#define WIREFRAME_SAME_COLOR
 
-#include "../cginc/Wireframe_PBR.cginc" 
+#include "../cginc/WireframePhysicallyBased.cginc" 
 
 
 		// vertex-to-fragment interpolation data
@@ -1887,7 +1944,7 @@ giInput.ambient.rgb = 0.0;
 	};
 
 
-#include "../cginc/Wireframe_GS.cginc"
+#include "../cginc/WireframeGeometryShader.cginc"
 
 
 	// vertex shader
@@ -1898,7 +1955,7 @@ giInput.ambient.rgb = 0.0;
 		vert(v, customInputData);
 		o.custompack0.xyzw = customInputData.texcoord;
 		o.custompack1.xyzw = customInputData.texcoord1;
-		o.custompack2.xyzw = customInputData.mass;
+		o.custompack2.xyzw = customInputData.wireframeShaderTriangleMass;
 		o.objectPos = v.vertex.xyz;
 
 		o.pos = UnityObjectToClipPos(v.vertex);
@@ -1919,11 +1976,11 @@ giInput.ambient.rgb = 0.0;
 	surfIN.texcoord.x = 1.0;
 	surfIN.texcoord1.x = 1.0;
 	surfIN.worldPos.x = 1.0;
-	surfIN.mass.x = 1.0;
+	surfIN.wireframeShaderTriangleMass.x = 1.0;
 	surfIN.color.x = 1.0;
 	surfIN.texcoord = IN.custompack0.xyzw;
 	surfIN.texcoord1 = IN.custompack1.xyzw;
-	surfIN.mass = IN.custompack2.xyzw;
+	surfIN.wireframeShaderTriangleMass = IN.custompack2.xyzw;
 	float3 worldPos = IN.worldPos;
 	surfIN.worldPos = worldPos;
 
@@ -1977,5 +2034,5 @@ giInput.ambient.rgb = 0.0;
 
 	}
 
-		FallBack "Hidden/VacuumShaders/The Amazing Wireframe/Mobile/Vertex Lit/Transparent/Full"
+		FallBack "Hidden/Amazing Assets/Wireframe Shader/Vertex Lit/Transparent/Full"
 }

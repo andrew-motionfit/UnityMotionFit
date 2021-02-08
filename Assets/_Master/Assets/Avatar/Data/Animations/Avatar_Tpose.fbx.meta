@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: c5ff76ca099f93b42826647cbfd23adb
 ModelImporter:
-  serializedVersion: 20200
+  serializedVersion: 20101
   internalIDToNameTable: []
   externalObjects: {}
   materials:
@@ -31,7 +31,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -582,7 +582,8 @@ ModelImporter:
     - name: mixamorig:Spine2
       parentName: mixamorig:Spine1
       position: {x: -0, y: 0.1281412, z: -9.1661007e-10}
-      rotation: {x: -0.000000007450581, y: -0.0000000029791347, z: 3.5282138e-10, w: 1}
+      rotation: {x: -0.000000007450581, y: -0.0000000029791347, z: 3.5282138e-10,
+        w: 1}
       scale: {x: 1.0000001, y: 1.0000002, z: 1}
     - name: mixamorig:LeftShoulder
       parentName: mixamorig:Spine2
@@ -832,7 +833,8 @@ ModelImporter:
     - name: mixamorig:Head
       parentName: mixamorig:Neck
       position: {x: -0, y: 0.065156706, z: 0.032158703}
-      rotation: {x: -0.000000007450581, y: 0.0000000027284837, z: 0.0000000011027623, w: 1}
+      rotation: {x: -0.000000007450581, y: 0.0000000027284837, z: 0.0000000011027623,
+        w: 1}
       scale: {x: 0.99999976, y: 1, z: 0.9999997}
     - name: mixamorig:HeadTop_End
       parentName: mixamorig:Head
@@ -856,7 +858,6 @@ ModelImporter:
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
-  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

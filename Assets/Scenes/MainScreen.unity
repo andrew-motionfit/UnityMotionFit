@@ -459,7 +459,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: bfc5803fa8fa8924bbeaa34f4f689bb1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.096
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1218,8 +1218,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIManagerAsset: {fileID: 11400000, guid: ed935159a86a1be4cbc1c44848b24daf, type: 2}
   audioObject: {fileID: 1367579117}
-  enableHoverSound: 1
-  enableClickSound: 1
+  enableHoverSound: 0
+  enableClickSound: 0
 --- !u!82 &1367579117
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1229,11 +1229,11 @@ AudioSource:
   m_GameObject: {fileID: 1367579115}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243485103152924164, guid: a9e5d729576b0a5478cec30207263369,
+  OutputAudioMixerGroup: {fileID: 24300002, guid: a9e5d729576b0a5478cec30207263369,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 468f662ba85278c419ef967f7c33907b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3247981f31be94df283adaef228316b7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.096
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1649,7 +1649,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: bfc5803fa8fa8924bbeaa34f4f689bb1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.096
   m_Pitch: 1
   Loop: 0
   Mute: 0

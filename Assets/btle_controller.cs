@@ -54,6 +54,7 @@ public class btle_controller : MonoBehaviour {
          _subscribingTimeout -= Time.deltaTime; 
          if (_subscribingTimeout <= 0f) { 
             _subscribingTimeout = 0f; 
+            
             BluetoothLEHardwareInterface.SubscribeCharacteristicWithDeviceAddress ( 
                _connectedID, FullUUID (_serviceUUID), FullUUID (_readCharacteristicUUID), 
                (deviceAddress, notification) => { 

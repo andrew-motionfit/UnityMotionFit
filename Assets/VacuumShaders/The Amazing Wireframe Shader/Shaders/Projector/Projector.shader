@@ -1,41 +1,38 @@
-
-
-// Upgrade NOTE: replaced '_Projector' with 'unity_Projector'
-// Upgrade NOTE: replaced '_ProjectorClip' with 'unity_ProjectorClip'
-
-Shader "VacuumShaders/The Amazing Wireframe/Projector"
+Shader "Amazing Assets/Wireframe Shader/Projector"
 {
 	Properties 
 	{
-		//Tag   
-		[V_WIRE_Tag] _V_WIRE_Tag("", float) = 0 
+		
+[WireframeCurvedWorldTitle] _CurvedWorldTitle("", Float) = 0
+//[CurvedWorldBendSettings] _CurvedWorldBendSettings("0|1|1", Vector) = (0, 0, 0, 0)
+		 
 		
 		[HideInInspector] _Color("Color (RGB)", color) = (1, 1, 1, 1)
 		[HideInInspector] _MainTex("Base (RGB)", 2D) = "white"{}		
 
 
 		//Visual Options
-		[V_WIRE_Title] _V_WIRE_Title_V_Options("Default Visual Options", float) = 0  
+		[WireframeTitle] _Wireframe_Title_V_Options("Default Visual Options", float) = 0  
 
 		[NoScaleOffset] _ShadowTex ("Color (RGB) Mask (A)", 2D) = "white" {}
 		[NoScaleOffset] _FalloffTex ("FallOff (A)", 2D) = "" {}
 						
 		//Wire S Options  
-		[V_WIRE_Title]  _V_WIRE_Title_S_Options("Wire Source Options", float) = 0
-		[V_WIRE_SourceProjector] _V_WIRE_Source_Options ("", float) = 0
-		_V_WIRE_Size("Size ", Float) = 1
-		[V_WIRE_Toggle] _V_WIRE_FixedSize("   Reduce By Distance", float) = 0
+		[WireframeTitle]  _Wireframe_Title_S_Options("Wireframe Shader Options", float) = 0
+		_WireframeShader_Thickness("Thickness", Range(0, 1)) = 0.01
+		_WireframeShader_Smoothness("Smoothness", Range(0, 1)) = 0	
+		_WireframeShader_Diameter("Diameter", Range(0, 1)) = 1
 			
 		//Wire Options
-		[V_WIRE_Title] _V_WIRE_Title_W_Options("Wire Visual Options", float) = 0  
-		_V_WIRE_Color("Color", color) = (0, 0, 0, 1)
-		[V_WIRE_PositiveFloat] _V_WIRE_EmissionStrength("Emission Strength", float) = 1
+		[WireframeHeader] _Wireframe_Title_W_Options("Base Options", float) = 0  
+		_Wireframe_Color("Color (RGB) Trans (A)", color) = (1, 0, 0, 1)
+		[WireframePositiveFloat]_Wireframe_ColorEmissionStrength("Emission Strength", float) = 0
 
 		//Transparency          
-		[V_WIRE_Title]		  _V_WIRE_Transparency_M_Options("Wire Transparency Options", float) = 0
-		[V_WIRE_DistanceFade]  _V_WIRE_DistanceFade ("Distance Fade", Float) = 0
-		[HideInInspector] _V_WIRE_DistanceFadeStart("", Float) = 5
-		[HideInInspector] _V_WIRE_DistanceFadeEnd("", Float) = 10
+		[WireframeHeader]		  _Wireframe_Transparency_M_Options("Transparency Options", float) = 0
+		[WireframeDistanceFade]  _Wireframe_DistanceFade ("Distance Fade", Float) = 0
+		[HideInInspector] _Wireframe_DistanceFadeStart("", Float) = 5
+		[HideInInspector] _Wireframe_DistanceFadeEnd("", Float) = 10
 	}
 	
 	Subshader 
@@ -63,14 +60,22 @@ Shader "VacuumShaders/The Amazing Wireframe/Projector"
 			float4x4 unity_Projector;
 			float4x4 unity_ProjectorClip;
 						
+//#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+//#define CURVEDWORLD_BEND_ID_1
+//#pragma shader_feature_local CURVEDWORLD_DISABLED_ON
+//#include "Assets/Amazing Assets/Curved World/Shaders/Core/CurvedWorldTransform.cginc"
+
+
+			#pragma shader_feature_local WIREFRAME_DISTANCE_FADE_ON
 			
-			#include "../cginc/Wireframe_Core.cginc"
+			#include "../cginc/WireframeBuiltinRPCore.cginc"
 
 
 			struct vInput
 			{
 				float4 vertex : POSITION;
 				half4 texcoord : TEXCOORD0;				
+				float4 texcoord3 : TEXCOORD3;				
 			};
 
 			struct v2f 
@@ -80,19 +85,20 @@ Shader "VacuumShaders/The Amazing Wireframe/Projector"
 				float4 uvFalloff : TEXCOORD1;
 
 				fixed3 mass : TEXCOORD2;	
-				float distanceFade : TEXCOORD3;
+				float3 positionWS : TEXCOORD3;
 
 				UNITY_FOG_COORDS(4)				
 			};
-			
+			 
 			
 			v2f vert (vInput v)
 			{
 				v2f o;
 
 
-//Curved World Compatibility
-CURVED_WORLD_TRANSFORM_POINT(v.vertex);
+#if defined(CURVEDWORLD_IS_INSTALLED) && !defined(CURVEDWORLD_DISABLED_ON)
+     CURVEDWORLD_TRANSFORM_VERTEX(v.vertex)
+#endif
 
 				
 				o.pos = UnityObjectToClipPos (v.vertex);
@@ -101,14 +107,11 @@ CURVED_WORLD_TRANSFORM_POINT(v.vertex);
 
 				UNITY_TRANSFER_FOG(o,o.pos);
 
-				o.mass = fixed3(floor(v.texcoord.z),  frac(v.texcoord.z) * 10, v.texcoord.w);
+				o.mass = v.texcoord3;
 
 
-				//Distance Fade
-				float fixedSize = distance(_WorldSpaceCameraPos, mul(unity_ObjectToWorld, v.vertex).xyz);
-				float distanceFade = (_V_WIRE_DistanceFadeEnd - fixedSize) / (_V_WIRE_DistanceFadeEnd - _V_WIRE_DistanceFadeStart);
-
-				o.distanceFade = lerp(1, saturate(distanceFade), _V_WIRE_DistanceFade);
+				o.positionWS = mul(unity_ObjectToWorld, v.vertex).xyz;
+				
 
 				return o;
 			}
@@ -121,17 +124,18 @@ CURVED_WORLD_TRANSFORM_POINT(v.vertex);
 				projT.a *= tex2Dproj (_FalloffTex, UNITY_PROJ_COORD(i.uvFalloff)).a;
 									
 
-				half value = ExtructWireframeFromMass(i.mass, 1);
+				half value = 1 - WireframeShaderReadTrangleMassFromUV(i.mass, _WireframeShader_Thickness, _WireframeShader_Smoothness, _WireframeShader_Diameter);
 
 
-				half4 res = projT * _V_WIRE_Color;
-				res.rgb *= _V_WIRE_EmissionStrength;
-				res.a = lerp(projT.a * _V_WIRE_Color.a, 0, value);
+				half4 res = projT * _Wireframe_Color;
+				res.rgb *= _Wireframe_ColorEmissionStrength;
+				res.a = lerp(projT.a * _Wireframe_Color.a, 0, value);
 
 
 				//Distance Fade
-				res.a *= i.distanceFade;
-
+				#ifdef WIREFRAME_DISTANCE_FADE_ON
+					res.a *= WireframeShaderDistanceFade(_WorldSpaceCameraPos, i.positionWS, _Wireframe_DistanceFadeStart, _Wireframe_DistanceFadeEnd);
+				#endif
 			
 				UNITY_APPLY_FOG(i.fogCoord, res);			
 

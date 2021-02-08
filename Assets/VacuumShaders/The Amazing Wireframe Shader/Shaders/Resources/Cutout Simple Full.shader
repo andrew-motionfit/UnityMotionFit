@@ -1,78 +1,77 @@
-Shader "Hidden/VacuumShaders/The Amazing Wireframe/Mobile/Vertex Lit/Cutout/Full" 
+Shader "Hidden/Amazing Assets/Wireframe Shader/Vertex Lit/Cutout/Full" 
 {
 	Properties 
 	{    
-		//Tag            
-		[V_WIRE_Tag] _V_WIRE_Tag("", float) = 0    
+		[WireframeCurvedWorldTitle] _CurvedWorldTitle("", Float) = 0
+//[CurvedWorldBendSettings] _CurvedWorldBendSettings("0|1|1", Vector) = (0, 0, 0, 0)
+		    
 		
 		//Rendering Options
-		[V_WIRE_RenderingOptions_VertexLit] _V_WIRE_RenderingOptions_VertexLitEnumID("", float) = 0
+		[WireframeTitle] _Wireframe_Title_Rendering_Options("Rendering Options", float) = 0  
+		[WireframeRenderingOptionsVertexLit] _Wireframe_RenderingOptions_VertexLitEnumID("", float) = 0
 
+		[MaterialEnum(Off,0,Front,1,Back,2)] _Cull ("Cull", Int) = 2
 
 		//Visual Options
-		[V_WIRE_Title] _V_WIRE_Title_V_Options("Default Visual Options", float) = 0  
+		[WireframeTitle] _Wireframe_Title_V_Options("Default Visual Options", float) = 0  
 		  
 		//Base 
 		_Color("Color (RGB) Trans (A)", color) = (1, 1, 1, 1)
 		_MainTex("Base (RGB) Trans (A)", 2D) = "white"{}			
-		[V_WIRE_UVScroll] _V_WIRE_MainTex_Scroll("    ", vector) = (0, 0, 0, 0)
+		[WireframeUVScroll] _Wireframe_MainTex_Scroll("", vector) = (0, 0, 0, 0)
 
-		_Cutoff("    Alpha cutoff", range(0, 1)) = 0.5
+		_Cutoff("    Alpha Cutoff", range(0, 1)) = 0.4
 
 
 		//Vertex Color
-		[V_WIRE_Toggle] _V_WIRE_VertexColor ("Vertex Color", float) = 0	
+		[Enum(Off,0,On,1)] _Wireframe_BaseVertexColor ("Vertex Color", float) = 0	
 
 		 
 		//Wire S Options  
-		[V_WIRE_Title] _V_WIRE_Title_S_Options("Wire Source Options", float) = 0  		
+		[WireframeTitle] _Wireframe_Title_S_Options("Wireframe Shader Options", float) = 0  		
 		
 		//Source
-		[V_WIRE_Source] _V_WIRE_Source_Options ("", float) = 0
-		[HideInInspector] _V_WIRE_SourceTex("", 2D) = "white"{}
-		[HideInInspector] _V_WIRE_SourceTex_Scroll("", vector) = (0, 0, 0, 0)
-
-		[HideInInspector] _V_WIRE_FixedSize("", float) = 0
-		[HideInInspector] _V_WIRE_Size("", Float) = 1
+		_WireframeShader_Thickness("Thickness", Range(0, 1)) = 0.01
+		_WireframeShader_Smoothness("Smoothness", Range(0, 1)) = 0	
+		_WireframeShader_Diameter("Diameter", Range(0, 1)) = 1
 
 		//Wire Options  
-		[V_WIRE_Title] _V_WIRE_Title_W_Options("Wire Visual Options", float) = 0  	
+		[WireframeHeader] _Wireframe_Title_W_Options("Base Options", float) = 0  	
 
-		_V_WIRE_Color("Color", color) = (0, 0, 0, 1)
-		_V_WIRE_WireTex("Color Texture (RGBA)", 2D) = "white"{}
-		[V_WIRE_UVScroll] _V_WIRE_WireTex_Scroll("    ", vector) = (0, 0, 0, 0)
-		[Enum(UV0,0,UV1,1)] _V_WIRE_WireTex_UVSet("    UV Set", float) = 0
+		_Wireframe_Color("Color (RGB) Trans (A)", color) = (1, 0, 0, 1)
+		[WireframePositiveFloat]_Wireframe_ColorEmissionStrength("Emission Strength", float) = 0
+		_Wireframe_ColorTexture("Color Texture (RGBA)", 2D) = "white"{}
+		[WireframeUVScroll] _Wireframe_ColorTexture_Scroll("", vector) = (0, 0, 0, 0)
+		
 
-		//Emission
-		[V_WIRE_PositiveFloat]_V_WIRE_EmissionStrength("Emission Strength", float) = 0
 
 		//Vertex Color
-		[V_WIRE_Toggle] _V_WIRE_WireVertexColor("Vertex Color", Float) = 0
+		[Enum(Off,0,On,1)] _Wireframe_WireVertexColor("Vertex Color", Float) = 0
 
 		//Light
-		[V_WIRE_IncludeLight] _V_WIRE_IncludeLightEnumID ("", float) = 0
+		[WireframeLightInteraction] _Wireframe_IncludeLightEnumID ("", float) = 0
 
 		//Transparency          
-		[V_WIRE_Title]		  _V_WIRE_Transparency_M_Options("Wire Transparency Options", float) = 0  
-		[V_WIRE_Transparency] _V_WIRE_TransparencyEnumID("", float) = 0 				
-		[HideInInspector]	  _V_WIRE_TransparentTex_Invert("    ", float) = 0
-		[HideInInspector]	  _V_WIRE_TransparentTex_Alpha_Offset("    ", Range(-1, 1)) = 0
+		[WireframeHeader]		  _Wireframe_Transparency_M_Options("Transparency Options", float) = 0  
+		[WireframeTextureTransparency] _Wireframe_TransparencyEnumID("", float) = 0 				
+		[HideInInspector]	  _Wireframe_TransparentTex_Invert("    ", float) = 0
+		[HideInInspector]	  _Wireframe_TransparentTex_Alpha_Offset("    ", Range(-1, 1)) = 0
 
 		//Distance Fade  
-	    [V_WIRE_DistanceFade]  _V_WIRE_DistanceFade ("Distance Fade", Float) = 0
-		[HideInInspector] _V_WIRE_DistanceFadeStart("", Float) = 5
-		[HideInInspector] _V_WIRE_DistanceFadeEnd("", Float) = 10 
+	    [WireframeDistanceFade]  _Wireframe_DistanceFade ("Distance Fade", Float) = 0
+		[HideInInspector] _Wireframe_DistanceFadeStart("", Float) = 5
+		[HideInInspector] _Wireframe_DistanceFadeEnd("", Float) = 10 
 
 		//Dynamic Mask
-		[V_WIRE_Title]		 _V_WIRE_Title_M_Options("Dynamic Mask Options", float) = 0  
-		[V_WIRE_DynamicMask] _V_WIRE_DynamicMaskEnumID("", float) = 0
-		[HideInInspector]    _V_WIRE_DynamicMaskInvert("", float) = -1
-		[HideInInspector]    _V_WIRE_DynamicMaskEffectsBaseTexEnumID("", int) = 0
-		[HideInInspector]    _V_WIRE_DynamicMaskEffectsBaseTexInvert("", float) = 0	
-		[HideInInspector]    _V_WIRE_DynamicMaskType("", Float) = 1
-		[HideInInspector]    _V_WIRE_DynamicMaskSmooth("", Range(0, 1)) = 1
+		[WireframeHeader]		 _Wireframe_Title_M_Options("Dynamic Mask Options", float) = 0  
+		[WireframeDynamicMask] _Wireframe_DynamicMaskEnumID("", float) = 0
+		[HideInInspector]    _Wireframe_DynamicMaskInvert("", float) = 0
+		[HideInInspector]    _Wireframe_DynamicMaskEffectsBaseTexEnumID("", int) = 0
+		[HideInInspector]    _Wireframe_DynamicMaskEffectsBaseTexInvert("", float) = 0	
+		[HideInInspector]    _Wireframe_DynamicMaskType("", Float) = 1
+		[HideInInspector][PositiveFloatDrawer]    _Wireframe_DynamicMaskEdgeSmooth("", float) = 0
 
-			[V_WIRE_Title]		 _V_WIRE_Title_UAR_Options("Unity Advanced Rendering Options", float) = 0
+			[WireframeTitle]		 _Wireframe_Title_UAR_Options("Unity Advanced Rendering Options", float) = 0
 	} 
 	    
 	Category      
@@ -82,6 +81,7 @@ Shader "Hidden/VacuumShaders/The Amazing Wireframe/Mobile/Vertex Lit/Cutout/Full
 			   "RenderType"="Wireframe_Full_TransparentCutout" 
 			 }    
 		LOD 150 
+		Cull [_Cull]
 	 
 		SubShader  
 		{			    
@@ -101,21 +101,23 @@ Shader "Hidden/VacuumShaders/The Amazing Wireframe/Mobile/Vertex Lit/Cutout/Full
 				#pragma multi_compile_fog
 
 
-				#pragma shader_feature V_WIRE_SOURCE_BAKED V_WIRE_SOURCE_TEXTURE
-
-				#pragma shader_feature V_WIRE_LIGHT_OFF V_WIRE_LIGHT_ON
-				#pragma shader_feature V_WIRE_TRANSPARENCY_OFF V_WIRE_TRANSPARENCY_ON
-
-				
-
-				#pragma shader_feature V_WIRE_DYNAMIC_MASK_OFF V_WIRE_DYNAMI_MASK_PLANE V_WIRE_DYNAMIC_MASK_SPHERE V_WIRE_DYNAMIC_MASK_BOX 
-				#pragma shader_feature V_WIRE_DYNAMIC_MASK_BASE_TEX_OFF V_WIRE_DYNAMIC_MASK_BASE_TEX_ON 
+//#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+//#define CURVEDWORLD_BEND_ID_1
+//#pragma shader_feature_local CURVEDWORLD_DISABLED_ON
+//#pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
+//#include "Assets/Amazing Assets/Curved World/Shaders/Core/CurvedWorldTransform.cginc"
 
 
-				#define V_WIRE_CUTOUT
-				#define V_WIRE_HAS_TEXTURE
+				#pragma shader_feature_local WIREFRAME_LIGHT_ATTENTION_ON
+				#pragma shader_feature_local WIREFRAME_COLOR_TEXTURE_TRANSPARENCY_ON
+				#pragma shader_feature_local WIREFRAME_DISTANCE_FADE_ON
+				#pragma shader_feature_local _ WIREFRAME_DYNAMIC_MASK_PLANE WIREFRAME_DYNAMIC_MASK_SPHERE WIREFRAME_DYNAMIC_MASK_BOX 
+				#pragma shader_feature_local WIREFRAME_DYNAMIC_MASK_BASE_TEX_ON 
 
-				#include "../cginc/Wireframe_VertexLit.cginc"
+				#define WIREFRAME_CUTOUT
+				#define WIREFRAME_HAS_TEXTURE
+
+				#include "../cginc/WireframeVertexLit.cginc"
 				
 				ENDCG
 			}
@@ -134,22 +136,24 @@ Shader "Hidden/VacuumShaders/The Amazing Wireframe/Mobile/Vertex Lit/Cutout/Full
 				#pragma multi_compile_fog
 
 
-				#pragma shader_feature V_WIRE_SOURCE_BAKED V_WIRE_SOURCE_TEXTURE
-
-				#pragma shader_feature V_WIRE_LIGHT_OFF V_WIRE_LIGHT_ON
-				#pragma shader_feature V_WIRE_TRANSPARENCY_OFF V_WIRE_TRANSPARENCY_ON
-
-				
-
-				#pragma shader_feature V_WIRE_DYNAMIC_MASK_OFF V_WIRE_DYNAMI_MASK_PLANE V_WIRE_DYNAMIC_MASK_SPHERE V_WIRE_DYNAMIC_MASK_BOX 
-				#pragma shader_feature V_WIRE_DYNAMIC_MASK_BASE_TEX_OFF V_WIRE_DYNAMIC_MASK_BASE_TEX_ON 
+//#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+//#define CURVEDWORLD_BEND_ID_1
+//#pragma shader_feature_local CURVEDWORLD_DISABLED_ON
+//#pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
+//#include "Assets/Amazing Assets/Curved World/Shaders/Core/CurvedWorldTransform.cginc"
 
 
-				#define V_WIRE_LIGHTMAP_ON
-				#define V_WIRE_CUTOUT
-				#define V_WIRE_HAS_TEXTURE
+				#pragma shader_feature_local WIREFRAME_LIGHT_ATTENTION_ON
+				#pragma shader_feature_local WIREFRAME_COLOR_TEXTURE_TRANSPARENCY_ON
+				#pragma shader_feature_local WIREFRAME_DISTANCE_FADE_ON
+				#pragma shader_feature_local _ WIREFRAME_DYNAMIC_MASK_PLANE WIREFRAME_DYNAMIC_MASK_SPHERE WIREFRAME_DYNAMIC_MASK_BOX 
+				#pragma shader_feature_local WIREFRAME_DYNAMIC_MASK_BASE_TEX_ON 
 
-				#include "../cginc/Wireframe_VertexLit.cginc"
+				#define WIREFRAME_LIGHTMAP_ON
+				#define WIREFRAME_CUTOUT
+				#define WIREFRAME_HAS_TEXTURE
+
+				#include "../cginc/WireframeVertexLit.cginc"
 
 				 
 				ENDCG         
@@ -167,23 +171,26 @@ Shader "Hidden/VacuumShaders/The Amazing Wireframe/Mobile/Vertex Lit/Cutout/Full
 				#pragma multi_compile_instancing // allow instanced shadow pass for most of the shaders
 
 				#pragma multi_compile_fog 
-				
-				#pragma shader_feature V_WIRE_SOURCE_BAKED V_WIRE_SOURCE_TEXTURE
+								
 
-				#pragma shader_feature V_WIRE_LIGHT_OFF V_WIRE_LIGHT_ON
-				#pragma shader_feature V_WIRE_TRANSPARENCY_OFF V_WIRE_TRANSPARENCY_ON
-				
-				
+//#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+//#define CURVEDWORLD_BEND_ID_1
+//#pragma shader_feature_local CURVEDWORLD_DISABLED_ON
+//#pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
+//#include "Assets/Amazing Assets/Curved World/Shaders/Core/CurvedWorldTransform.cginc"
 
-				#pragma shader_feature V_WIRE_DYNAMIC_MASK_OFF V_WIRE_DYNAMI_MASK_PLANE V_WIRE_DYNAMIC_MASK_SPHERE V_WIRE_DYNAMIC_MASK_BOX 
-				#pragma shader_feature V_WIRE_DYNAMIC_MASK_BASE_TEX_OFF V_WIRE_DYNAMIC_MASK_BASE_TEX_ON 
-			  
 
-				#define V_WIRE_LIGHTMAP_ON
-				#define V_WIRE_CUTOUT
-				#define V_WIRE_HAS_TEXTURE
+				#pragma shader_feature_local WIREFRAME_LIGHT_ATTENTION_ON
+				#pragma shader_feature_local WIREFRAME_COLOR_TEXTURE_TRANSPARENCY_ON
+				#pragma shader_feature_local WIREFRAME_DISTANCE_FADE_ON
+				#pragma shader_feature_local _ WIREFRAME_DYNAMIC_MASK_PLANE WIREFRAME_DYNAMIC_MASK_SPHERE WIREFRAME_DYNAMIC_MASK_BOX 
+				#pragma shader_feature_local WIREFRAME_DYNAMIC_MASK_BASE_TEX_ON 
 
-				#include "../cginc/Wireframe_VertexLit.cginc"
+				#define WIREFRAME_LIGHTMAP_ON
+				#define WIREFRAME_CUTOUT
+				#define WIREFRAME_HAS_TEXTURE
+
+				#include "../cginc/WireframeVertexLit.cginc"
 				 
 				ENDCG
 			}  
@@ -203,18 +210,23 @@ Shader "Hidden/VacuumShaders/The Amazing Wireframe/Mobile/Vertex Lit/Cutout/Full
 				#include "UnityCG.cginc" 
 				
 
-				#pragma shader_feature V_WIRE_SOURCE_BAKED V_WIRE_SOURCE_TEXTURE
+				
+//#define CURVEDWORLD_BEND_TYPE_CLASSICRUNNER_X_POSITIVE
+//#define CURVEDWORLD_BEND_ID_1
+//#pragma shader_feature_local CURVEDWORLD_DISABLED_ON
+//#pragma shader_feature_local CURVEDWORLD_NORMAL_TRANSFORMATION_ON
+//#include "Assets/Amazing Assets/Curved World/Shaders/Core/CurvedWorldTransform.cginc"
 
-				#pragma shader_feature V_WIRE_TRANSPARENCY_OFF V_WIRE_TRANSPARENCY_ON
 
-				#pragma shader_feature V_WIRE_DYNAMIC_MASK_OFF V_WIRE_DYNAMI_MASK_PLANE V_WIRE_DYNAMIC_MASK_SPHERE V_WIRE_DYNAMIC_MASK_BOX 
-				#pragma shader_feature V_WIRE_DYNAMIC_MASK_BASE_TEX_OFF V_WIRE_DYNAMIC_MASK_BASE_TEX_ON 
-
+				#pragma shader_feature_local WIREFRAME_COLOR_TEXTURE_TRANSPARENCY_ON
+				#pragma shader_feature_local WIREFRAME_DISTANCE_FADE_ON
+				#pragma shader_feature_local _ WIREFRAME_DYNAMIC_MASK_PLANE WIREFRAME_DYNAMIC_MASK_SPHERE WIREFRAME_DYNAMIC_MASK_BOX 
+				#pragma shader_feature_local WIREFRAME_DYNAMIC_MASK_BASE_TEX_ON 
 			  
-				#define V_WIRE_CUTOUT 
-				#define V_WIRE_SHADOWCASTER 
+				#define WIREFRAME_CUTOUT 
+				#define WIREFRAME_SHADOWCASTER 
 
-				#include "../cginc/Wireframe_Shadow.cginc" 			
+				#include "../cginc/WireframeShadow.cginc" 			
 				ENDCG 
 			}
 		}

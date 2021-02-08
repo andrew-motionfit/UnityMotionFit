@@ -8,8 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Cutout (Mask Sphere Invert)
-  m_Shader: {fileID: -6465566751694194690, guid: 3406a7de4c86fc14ea30503eb4f12ee9,
-    type: 3}
+  m_Shader: {fileID: 4800000, guid: 2043a9bcc2f52684d876f53aa63c2eff, type: 3}
   m_ShaderKeywords: ENUM_5312DE06_SPHERE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -42,11 +41,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 0.1, y: 0.1}
+        m_Offset: {x: 0, y: 0}
+    - _FalloffTex:
+        m_Texture: {fileID: 2800000, guid: dd93ece84d407cd44931653f592c0cb4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: b2999f5f6fce02f4588aea390e3fcbbf, type: 3}
+        m_Scale: {x: 0.1, y: 0.1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -58,6 +61,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ShadowTex:
+        m_Texture: {fileID: 2800000, guid: 3584f2bf4afb5284d91edb6a29126e62, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -86,9 +93,9 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.86
+    - _Glossiness: 1
     - _GlossyReflections: 1
-    - _Metallic: 0
+    - _Metallic: 1
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -99,15 +106,15 @@ Material:
     - _UVSec: 0
     - _WireframeShader_Diameter: 0
     - _WireframeShader_Smoothness: 0
-    - _WireframeShader_Thickness: 0.02
+    - _WireframeShader_Thickness: 0
     - _Wireframe_AmbientOcclusion: 0
     - _Wireframe_AmbientOcclusionStrength: 1
     - _Wireframe_BaseVertexColor: 0
     - _Wireframe_BumpEnumID: 0
-    - _Wireframe_ColorEmissionStrength: 0.5
+    - _Wireframe_ColorEmissionStrength: 10000
     - _Wireframe_DistanceFade: 0
     - _Wireframe_DistanceFadeEnd: 10
-    - _Wireframe_DistanceFadeStart: 5
+    - _Wireframe_DistanceFadeStart: 0
     - _Wireframe_DynamicMaskEdgeSmooth: 0
     - _Wireframe_DynamicMaskEffectsBaseTexEnumID: 1
     - _Wireframe_DynamicMaskEffectsBaseTexInvert: 1
@@ -137,9 +144,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_DF059B30: {r: 0.1411764, g: 0.13725483, b: 0.13725483, a: 0}
-    - _Color: {r: 0.14150941, g: 0.13750443, b: 0.13750443, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _Wireframe_Color: {r: 0.082352914, g: 0.8000001, b: 0.87843144, a: 1}
+    - _Wireframe_Color: {r: 0, g: 1, b: 0.86911154, a: 1}
     - _Wireframe_ColorTexture_Scroll: {r: 0, g: 0, b: 0, a: 0}
     - _Wireframe_MainTex_Scroll: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

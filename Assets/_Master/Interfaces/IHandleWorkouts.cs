@@ -1,6 +1,6 @@
 using UnityEngine;
 interface IHandleWorkouts
 {
-     void NewWorkout();
+     void NewWorkout(WorkoutScriptableObject workout);
      void ReadUserData();
 }

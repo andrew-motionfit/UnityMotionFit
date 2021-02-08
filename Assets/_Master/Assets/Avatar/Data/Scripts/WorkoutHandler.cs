@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Michsky.UI.ModernUIPack;
+
 [RequireComponent(typeof(Animator))]
 public class WorkoutHandler : MonoBehaviour, IHandleWorkouts
 {
@@ -16,69 +16,35 @@ public class WorkoutHandler : MonoBehaviour, IHandleWorkouts
     Animator animator = null;
     private bool isReadingPlayerData = false;
 
-    public bool usingLeftHand = false;
-    public bool usingRightHand = false;
-
-    public WorkoutScriptableObject workout;
-    public HorizontalSelector HS;
-    private int tempValue = 0;
+    private bool usingLeftHand = false;
+    private bool usingRightHand = false;
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        playerRightHand.SetParent(rightHandPosition);
-        playerLeftHand.SetParent(leftHandPosition);
-        playerRightHand.localPosition = Vector3.zero;
-        playerLeftHand.localPosition = Vector3.zero;
+    }
+    public void NewWorkout(WorkoutScriptableObject workout)
+    {
+        isReadingPlayerData = false;
+
+        animator.runtimeAnimatorController = workout.workoutController;
+        animator.SetBool("isWorkoutActive", true);
         if (workout.leftHandAsset)
         {
-
+            usingLeftHand = true;
             var leftHandAsset = Instantiate(workout.leftHandAsset);
-            leftHandAsset.transform.SetParent(playerLeftHand);
+            leftHandAsset.transform.parent = leftHandPosition;
             leftHandAsset.transform.localPosition = Vector3.zero;
             leftHandAsset.transform.localRotation = Quaternion.identity;
         }
 
         if (workout.rightHandAsset)
         {
-
+            usingRightHand = true;
             var rightHandAsset = Instantiate(workout.leftHandAsset);
-            rightHandAsset.transform.SetParent(playerRightHand);
+            rightHandAsset.transform.parent = rightHandPosition;
             rightHandAsset.transform.localPosition = Vector3.zero;
             rightHandAsset.transform.localRotation = Quaternion.identity;
         }
-
-          GetComponent<Animator>().SetBool("shoulderpress",false);
-            Invoke("SetIK", 1f);
-            tempValue = 0;
-
-    }
-    public void NewWorkout()
-    {
-        if (HS.index == tempValue)
-            return;
-
-
-        usingLeftHand = false;
-        usingRightHand = false;
-        animator = GetComponent<Animator>();
-        playerRightHand.SetParent(rightHandPosition);
-        playerLeftHand.SetParent(leftHandPosition);
-        playerRightHand.localPosition = Vector3.zero;
-        playerLeftHand.localPosition = Vector3.zero;
-        isReadingPlayerData = false;
-        if (HS.index == 0 && tempValue != 0)
-        {
-            GetComponent<Animator>().SetBool("shoulderpress",false);
-            Invoke("SetIK", 2f);
-            tempValue = 0;
-        }
-        else if(HS.index == 1 && tempValue != 1)
-        {
-            GetComponent<Animator>().SetBool("shoulderpress", true);
-            Invoke("SetIK",2f);
-            tempValue = 1;
-        }
-   
     }
 
     public void ReadUserData()
@@ -86,22 +52,10 @@ public class WorkoutHandler : MonoBehaviour, IHandleWorkouts
         isReadingPlayerData = true;
     }
 
-     public void SetIK()
-    {
-        usingLeftHand = true;
-        usingRightHand = true;
-        playerRightHand.SetParent(null);
-        playerLeftHand.SetParent(null);
-        //    animator.runtimeAnimatorController = workout.workoutController;
-        //  animator.SetBool("isWorkoutActive", true);
-        
-
-    }
-
     private void OnAnimatorIK(int layerIndex)
     {
-        //if (isReadingPlayerData)
-        //{
+        if (isReadingPlayerData)
+        {
             if (usingLeftHand)
             {
                 animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
@@ -123,6 +77,6 @@ public class WorkoutHandler : MonoBehaviour, IHandleWorkouts
 
 
 
-     //   }
+        }
     }
 }

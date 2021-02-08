@@ -7,14 +7,8 @@ public class WorkoutManager : MonoBehaviour
     [SerializeField] private GameObject player = null;  
     public void NewWorkout(WorkoutScriptableObject currentWorkout)
     {
-
-
-
         if (player)
-        {
-            
-            player.GetComponent<IHandleWorkouts>().NewWorkout();
-        }
+            player.GetComponent<IHandleWorkouts>().NewWorkout(currentWorkout);
     }
 
     public void ReadUserData()

@@ -71,7 +71,6 @@ namespace Michsky.UI.ModernUIPack
 
         public void SetupSelector()
         {
-            print(PlayerPrefs.GetInt(selectorTag + "HSelectorValue"));
             if (itemList.Count != 0)
             {
                 if (saveValue == true)

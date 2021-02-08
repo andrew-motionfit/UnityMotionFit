@@ -10,11 +10,11 @@ public class btle_controller : MonoBehaviour {
    // change these to match the bluetooth device you're connecting to: 
    // ----------------------------------------------------------------- 
    // private string _FullUID = "713d****-503e-4c75-ba94-3148f18d941e"; // redbear module pattern 
-   private string _FullUID = "1013D85C-92D4-F7D8-3BA0-B80F638C0153";     // BLE-CC41a module pattern 
-   private string _serviceUUID = "00000000-000E-11E1-9AB4-0002A5D5C51B"; 
-   private string _readCharacteristicUUID = "00000002-000E-11E1-AC36-0002A5D5C51B"; 
-   private string _writeCharacteristicUUID = "00000001-000E-11E1-AC36-0002A5D5C51B"; 
-   private string deviceToConnectTo = "TILEBOX"; 
+   private string _FullUID = "00002a05-0000-1000-8000-00805f9b34fb";     // BLE-CC41a module pattern 
+   private string _serviceUUID = "00000000-cc7a-482a-984a-7f2ed5b3e58f"; 
+   private string _readCharacteristicUUID = "0000e000-8e22-4541-9d4c-21edae82ed19"; 
+   private string _writeCharacteristicUUID = "00000004-8e22-4541-9d4c021edae82ed19"; 
+   private string deviceToConnectTo = "FITCAP1"; 
 
    public bool isConnected=false; 
    private bool _readFound=false; 

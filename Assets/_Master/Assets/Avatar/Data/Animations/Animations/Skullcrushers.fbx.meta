@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 2b8cbc9d45278314d92d6f3996ca19d8
 ModelImporter:
-  serializedVersion: 20101
+  serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 4482603987631628829
@@ -18,8 +18,7 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: "Copied Avatar Rig Configuration mis-match. Transform hierarchy
-      does not match:\n\tTransform 'MaleFitA@Bicep Curl' not found in HumanDescription.\n"
+    rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -586,8 +585,7 @@ ModelImporter:
     - name: mixamorig:Spine2
       parentName: mixamorig:Spine1
       position: {x: -0, y: 0.1281412, z: -9.1661007e-10}
-      rotation: {x: -0.000000007450581, y: -0.0000000029791347, z: 3.5282138e-10,
-        w: 1}
+      rotation: {x: -0.000000007450581, y: -0.0000000029791347, z: 3.5282138e-10, w: 1}
       scale: {x: 1.0000001, y: 1.0000002, z: 1}
     - name: mixamorig:LeftShoulder
       parentName: mixamorig:Spine2
@@ -837,8 +835,7 @@ ModelImporter:
     - name: mixamorig:Head
       parentName: mixamorig:Neck
       position: {x: -0, y: 0.065156706, z: 0.032158703}
-      rotation: {x: -0.000000007450581, y: 0.0000000027284837, z: 0.0000000011027623,
-        w: 1}
+      rotation: {x: -0.000000007450581, y: 0.0000000027284837, z: 0.0000000011027623, w: 1}
       scale: {x: 0.99999976, y: 1, z: 0.9999997}
     - name: mixamorig:HeadTop_End
       parentName: mixamorig:Head
@@ -857,12 +854,12 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: c5ff76ca099f93b42826647cbfd23adb,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: c5ff76ca099f93b42826647cbfd23adb, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

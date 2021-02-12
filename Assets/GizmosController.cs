@@ -19,9 +19,10 @@ public class GizmosController : MonoBehaviour
 
     void OnMouseDown()
 	{
+		Debug.Log("Here");
+
 		if (transform.parent != null)
 			return;
-
 
 		screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));

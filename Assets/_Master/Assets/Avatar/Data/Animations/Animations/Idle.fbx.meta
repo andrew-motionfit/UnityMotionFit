@@ -1,14 +1,14 @@
 fileFormatVersion: 2
 guid: c0e7bd3e21d678a47b45ee61faedc675
 ModelImporter:
-  serializedVersion: 20200
+  serializedVersion: 19301
   internalIDToNameTable:
   - first:
-      74: -203655887218126122
+      74: -3100369314251171874
     second: Idle
   externalObjects: {}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -19,7 +19,14 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
+      does not match position in animation file:\n\t'mixamorig:LeftUpLeg' : position
+      error = 9244.704102 mm\n\t'mixamorig:LeftLeg' : position error = 41038.218750
+      mm\n\t'mixamorig:LeftFoot' : position error = 39080.601563 mm\n\t'mixamorig:LeftToeBase'
+      : position error = 16069.257813 mm\n\t'mixamorig:RightUpLeg' : position error
+      = 9254.630859 mm\n\t'mixamorig:RightLeg' : position error = 41057.203125 mm\n\t'mixamorig:RightFoot'
+      : position error = 39081.902344 mm\n\t'mixamorig:RightToeBase' : position error
+      = 16384.404297 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -48,9 +55,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
@@ -81,7 +88,6 @@ ModelImporter:
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
-    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
@@ -91,11 +97,8 @@ ModelImporter:
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
-    secondaryUVMarginMethod: 1
-    secondaryUVMinLightmapResolution: 40
-    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -614,7 +617,8 @@ ModelImporter:
     - name: mixamorig:Spine2
       parentName: mixamorig:Spine1
       position: {x: -0, y: 0.1281412, z: -9.1661007e-10}
-      rotation: {x: -0.000000007450581, y: -0.0000000029791347, z: 3.5282138e-10, w: 1}
+      rotation: {x: -0.000000007450581, y: -0.0000000029791347, z: 3.5282138e-10,
+        w: 1}
       scale: {x: 1.0000001, y: 1.0000002, z: 1}
     - name: mixamorig:LeftShoulder
       parentName: mixamorig:Spine2
@@ -864,7 +868,8 @@ ModelImporter:
     - name: mixamorig:Head
       parentName: mixamorig:Neck
       position: {x: -0, y: 0.065156706, z: 0.032158703}
-      rotation: {x: -0.000000007450581, y: 0.0000000027284837, z: 0.0000000011027623, w: 1}
+      rotation: {x: -0.000000007450581, y: 0.0000000027284837, z: 0.0000000011027623,
+        w: 1}
       scale: {x: 0.99999976, y: 1, z: 0.9999997}
     - name: mixamorig:HeadTop_End
       parentName: mixamorig:Head
@@ -883,12 +888,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: c5ff76ca099f93b42826647cbfd23adb, type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 2
-  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

@@ -97,6 +97,13 @@ public class CustomAuth : MonoBehaviour
             if (task.IsFaulted)
             {
                 Debug.LogError("CreateUserWithEmailAndPasswordAsync error: " + task.Exception);
+                string temp = task.Exception.ToString();
+                if(temp.Contains("The email address is already in use by another account"))
+                {
+                  
+                    FS.CSB.infotxt.text = "User with "+ email +" already have a account please try sign in";
+                    FS.CSB.WarningPanel.SetActive(true);
+                }
                 if (task.Exception.InnerExceptions.Count > 0)
                     UpdateErrorMessage(task.Exception.InnerExceptions[0].Message);
                 return;

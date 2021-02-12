@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using TMPro;
 public class ChangeSceneWithButton : MonoBehaviour
 {
     public Image Fade;
+    public GameObject WarningPanel;
+    public TextMeshProUGUI infotxt;
     public void LoadScene()
     {
         Fade.enabled = true;

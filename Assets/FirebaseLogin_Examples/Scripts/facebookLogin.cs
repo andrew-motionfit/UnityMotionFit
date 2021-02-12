@@ -81,16 +81,21 @@ public class facebookLogin : MonoBehaviour
                     if (task.IsCanceled)
                     {
                         Debug.LogError("SignInWithCredentialAsync was canceled.");
+                        FS.CSB.infotxt.text = "User with " + task.Result.Email + " already have a account please try sign in";
+                        FS.CSB.WarningPanel.SetActive(true);
                         return;
                     }
                     if (task.IsFaulted)
                     {
                         Debug.LogError("SignInWithCredentialAsync encountered an error: " + task.Exception);
+                        FS.CSB.infotxt.text = "User with " + task.Result.Email + " already have a account please try sign in";
+                        FS.CSB.WarningPanel.SetActive(true);
                         return;
                     }
 
                     Firebase.Auth.FirebaseUser newUser = task.Result;
-                    Debug.LogFormat("User signed in successfully: {0} ({1})",newUser.DisplayName, newUser.UserId);
+                    print(task.Exception);
+                    Debug.LogFormat("User signed in successfully: {0} ({1})  ",newUser.DisplayName, newUser.UserId);
                    
                     FS.registerUser(newUser.DisplayName,newUser.Email,newUser.UserId);
                           

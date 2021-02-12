@@ -13,7 +13,7 @@ public class WorkoutHandler : MonoBehaviour, IHandleWorkouts
     [SerializeField] private Transform leftHandPosition;
 
 
-    Animator animator = null;
+    public Animator animator = null;
     private bool isReadingPlayerData = false;
 
     private bool usingLeftHand = false;
@@ -45,6 +45,12 @@ public class WorkoutHandler : MonoBehaviour, IHandleWorkouts
             rightHandAsset.transform.localPosition = Vector3.zero;
             rightHandAsset.transform.localRotation = Quaternion.identity;
         }
+    }
+
+    public void StopWorkout(WorkoutScriptableObject workout)
+    {
+        animator.runtimeAnimatorController = workout.workoutController;
+        animator.SetBool("isWorkoutActive", false);
     }
 
     public void ReadUserData()

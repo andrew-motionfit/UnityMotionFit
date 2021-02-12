@@ -6,9 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LoginScene.unity
-    guid: 3866e151851f44dc9a6e464943709c48
+    path: Assets/Scenes/CreateWorkout.unity
+    guid: 4f99b5e54ed46364799dffc9e9de1c1a
   - enabled: 1
     path: Assets/Scenes/MainScreen.unity
     guid: 473e0178fb87f441d8a7840fd885a6dc
+  - enabled: 1
+    path: Assets/Scenes/User Profile.unity
+    guid: 47b42839de1c8493c9f54c9091f9c8c2
+  - enabled: 1
+    path: Assets/Scenes/Workout.unity
+    guid: 5896d2f9b0290c54da9986af0ecad1a8
+  - enabled: 1
+    path: Assets/Scenes/InputScreen.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/Scenes/LoginScene.unity
+    guid: 3866e151851f44dc9a6e464943709c48
   m_configObjects: {}

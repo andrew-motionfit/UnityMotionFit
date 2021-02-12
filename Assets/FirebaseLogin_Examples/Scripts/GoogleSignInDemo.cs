@@ -68,10 +68,15 @@ public class GoogleSignInDemo : MonoBehaviour
                    
                 }
             }
+
+            FS.CSB.infotxt.text = "User with " + task.Result.Email + " already have a account please try sign in";
+            FS.CSB.WarningPanel.SetActive(true);
+
         }
         else if (task.IsCanceled)
         {
-           
+            FS.CSB.infotxt.text = "User with " + task.Result.Email + " already have a account please try sign in";
+            FS.CSB.WarningPanel.SetActive(true);
         }
         else
         {

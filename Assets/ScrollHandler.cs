@@ -15,6 +15,8 @@ public class ScrollHandler : MonoBehaviour
     public List<GameObject> selectedExerciseobj = new List<GameObject>();
     public List<string> AnimatorParameters = new List<string>();
     public Animator ani;
+    public Image circle;
+    public Button closebutton;
     private void Start()
     {
        
@@ -32,7 +34,15 @@ public class ScrollHandler : MonoBehaviour
         
     }
 
-
+    public void closeAnimation()
+    {
+        for (int y = 0; y < AnimatorParameters.Count; y++)
+        {
+            ani.SetBool(AnimatorParameters[y], false);
+        }
+        closebutton.gameObject.SetActive(false);
+        circle.gameObject.SetActive(false);
+    }
     public void addExercise(string a)
     {
         for (int y = 0; y < AnimatorParameters.Count; y++)
@@ -65,6 +75,8 @@ public class ScrollHandler : MonoBehaviour
                     clone.GetComponentInChildren<TextMeshProUGUI>().text = a;
                     clone.gameObject.SetActive(true);
                     selectedExerciseobj.Add(clone);
+                    closebutton.gameObject.SetActive(true);
+                    circle.gameObject.SetActive(true);
                     if (tempparameter.Length > 1)
                     {
                         ani.SetBool(tempparameter, true);
@@ -82,6 +94,8 @@ public class ScrollHandler : MonoBehaviour
                             GameObject temp = selectedExerciseobj[z];
                             Destroy(temp);
                             selectedExerciseobj.Remove(selectedExerciseobj[z]);
+                            closebutton.gameObject.SetActive(false);
+                            circle.gameObject.SetActive(false);
                             if (tempparameter.Length > 1)
                             {
                                 ani.SetBool(tempparameter, false);

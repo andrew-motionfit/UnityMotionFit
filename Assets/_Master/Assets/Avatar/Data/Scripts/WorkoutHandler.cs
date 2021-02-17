@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-[RequireComponent(typeof(Animator))]
 public class WorkoutHandler : MonoBehaviour, IHandleWorkouts
 {
     public Transform playerRightHand = null;
@@ -20,7 +18,7 @@ public class WorkoutHandler : MonoBehaviour, IHandleWorkouts
     private bool usingRightHand = false;
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+       // animator = GetComponent<Animator>();
     }
     public void NewWorkout(WorkoutScriptableObject workout)
     {

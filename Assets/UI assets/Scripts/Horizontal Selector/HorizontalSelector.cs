@@ -192,27 +192,27 @@ namespace Michsky.UI.ModernUIPack
 
             if (enableIndicators == true)
             {
-                for (int i = 0; i < itemList.Count; ++i)
-                {
-                    GameObject go = indicatorParent.GetChild(i).gameObject;
+                //for (int i = 0; i < itemList.Count; ++i)
+                //{
+                //    GameObject go = indicatorParent.GetChild(i).gameObject;
 
-                    Transform onObj;
-                    onObj = go.transform.Find("On");
-                    Transform offObj;
-                    offObj = go.transform.Find("Off");
+                //    Transform onObj;
+                //    onObj = go.transform.Find("On");
+                //    Transform offObj;
+                //    offObj = go.transform.Find("Off");
 
-                    if (i == index)
-                    {
-                        onObj.gameObject.SetActive(true);
-                        offObj.gameObject.SetActive(false);
-                    }
+                //    if (i == index)
+                //    {
+                //        onObj.gameObject.SetActive(true);
+                //        offObj.gameObject.SetActive(false);
+                //    }
 
-                    else
-                    {
-                        onObj.gameObject.SetActive(false);
-                        offObj.gameObject.SetActive(true);
-                    }
-                }
+                //    else
+                //    {
+                //        onObj.gameObject.SetActive(false);
+                //        offObj.gameObject.SetActive(true);
+                //    }
+                //}
             }
         }
 
@@ -288,24 +288,24 @@ namespace Michsky.UI.ModernUIPack
 
             if (enableIndicators == true)
             {
-                for (int i = 0; i < itemList.Count; ++i)
-                {
-                    GameObject go = indicatorParent.GetChild(i).gameObject;
-                    Transform onObj = go.transform.Find("On"); ;
-                    Transform offObj = go.transform.Find("Off");
+                //for (int i = 0; i < itemList.Count; ++i)
+                //{
+                //    GameObject go = indicatorParent.GetChild(i).gameObject;
+                //    Transform onObj = go.transform.Find("On"); ;
+                //    Transform offObj = go.transform.Find("Off");
 
-                    if (i == index)
-                    {
-                        onObj.gameObject.SetActive(true);
-                        offObj.gameObject.SetActive(false);
-                    }
+                //    if (i == index)
+                //    {
+                //        onObj.gameObject.SetActive(true);
+                //        offObj.gameObject.SetActive(false);
+                //    }
 
-                    else
-                    {
-                        onObj.gameObject.SetActive(false);
-                        offObj.gameObject.SetActive(true);
-                    }
-                }
+                //    else
+                //    {
+                //        onObj.gameObject.SetActive(false);
+                //        offObj.gameObject.SetActive(true);
+                //    }
+                //}
             }
         }
 

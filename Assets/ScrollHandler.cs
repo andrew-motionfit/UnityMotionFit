@@ -17,6 +17,7 @@ public class ScrollHandler : MonoBehaviour
     public Animator ani;
     public Image circle;
     public Button closebutton;
+    public GameObject startworkout;
     private void Start()
     {
        
@@ -33,7 +34,29 @@ public class ScrollHandler : MonoBehaviour
 
         
     }
-
+    public void startWorkout()
+    {
+        string tempstring = "";
+            for (int i = 0; i < selectedExercise.Count; i++)
+           {
+            for (int z = 0; z < AnimatorParameters.Count; z++)
+            {
+                if(selectedExercise[i] == AnimatorParameters[z])
+                {
+                    if (tempstring.Length > 0)
+                    {
+                        tempstring += "," + z;
+                    }
+                    else
+                    {
+                        tempstring += z;
+                    }
+                }
+            }
+           }
+        PlayerPrefs.SetString("Exerciseindex",tempstring);
+        print(tempstring);
+        }
     public void closeAnimation()
     {
         for (int y = 0; y < AnimatorParameters.Count; y++)
@@ -107,6 +130,15 @@ public class ScrollHandler : MonoBehaviour
                    
                 }
             }
+        }
+         
+        if(selectedExercise.Count > 0)
+        {
+            startworkout.gameObject.SetActive(true);
+        }
+        else
+        {
+            startworkout.gameObject.SetActive(false);
         }
       
     }

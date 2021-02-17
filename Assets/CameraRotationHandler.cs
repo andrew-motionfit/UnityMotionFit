@@ -1,6 +1,6 @@
 ﻿
 using UnityEngine;
-
+[RequireComponent(typeof(Camera))]
 public class CameraRotationHandler : MonoBehaviour
 {
     public Transform cameraJig;

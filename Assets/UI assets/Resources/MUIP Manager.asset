@@ -41,9 +41,9 @@ MonoBehaviour:
   dropdownItemTextColor: {r: 1, g: 1, b: 1, a: 1}
   dropdownItemIconColor: {r: 255, g: 255, b: 255, a: 1}
   selectorFont: {fileID: 11400000, guid: 4bd810f1cbcb0f446a8f5a31453e243f, type: 2}
-  hSelectorFontSize: 28
-  selectorColor: {r: 1, g: 1, b: 1, a: 1}
-  selectorHighlightedColor: {r: 0.1764706, g: 0.25490198, b: 0.33333334, a: 1}
+  hSelectorFontSize: 70
+  selectorColor: {r: 0.5568628, g: 0.5568628, b: 0.5568628, a: 1}
+  selectorHighlightedColor: {r: 0.34509805, g: 0.47058824, b: 0.59607846, a: 1}
   hSelectorInvertAnimation: 0
   hSelectorLoopSelection: 1
   inputFieldFont: {fileID: 11400000, guid: 4bd810f1cbcb0f446a8f5a31453e243f, type: 2}

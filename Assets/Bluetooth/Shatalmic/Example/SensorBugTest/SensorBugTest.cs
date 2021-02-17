@@ -6,15 +6,12 @@ using UnityEngine.UI;
 
 public class SensorBugTest : MonoBehaviour
 {
-	public string DeviceName = "FITCAP1";
+	public string DeviceName = "Fitcap1";
 
 	public Text AccelerometerText;
 	public Text SensorBugStatusText;
 
-	public GameObject PairingMessage;
-	public GameObject TopPanel;
-	public GameObject MiddlePanel;
-
+	
 	public class Characteristic
 	{
 		public string ServiceUUID;
@@ -24,9 +21,9 @@ public class SensorBugTest : MonoBehaviour
 
 	public static List<Characteristic> Characteristics = new List<Characteristic>
 	{
-		new Characteristic { ServiceUUID = "00001801-0000-1000-8000-00805f9b34fb", CharacteristicUUID = "00002a05-0000-1000-8000-00805f9b34fb", Found = false },
-		new Characteristic { ServiceUUID = "00001800-0000-1000-8000-00805f9b34fb", CharacteristicUUID = "00002a00-0000-1000-8000-00805f9b34fb", Found = false },
-		new Characteristic { ServiceUUID = "00000000-cc7a-482a-984a-7f2ed5b3e58f", CharacteristicUUID = "0000e000-8e22-4541-9d4c-21edae82ed19", Found = false },
+		new Characteristic { ServiceUUID = "9DC84838-7619-4F09-A1CE-DDCF63225B10", CharacteristicUUID = "9DC84838-7619-4F09-A1CE-DDCF63225B11", Found = false },
+		new Characteristic { ServiceUUID = "9DC84838-7619-4F09-A1CE-DDCF63225B10", CharacteristicUUID = "9DC84838-7619-4F09-A1CE-DDCF63225B12", Found = false },
+		new Characteristic { ServiceUUID = "3188AC28-72D4-4006-BD96-C6C4BC6153A0", CharacteristicUUID = "3188AC28-72D4-4006-BD96-C6C4BC6153A1", Found = false },
 	};
 
 	public Characteristic ConfigureAccelerometer = Characteristics[0];
@@ -81,9 +78,9 @@ public class SensorBugTest : MonoBehaviour
 
 		if (!_pairing)
 		{
-			PairingMessage.SetActive (true);
-			TopPanel.SetActive (false);
-			MiddlePanel.SetActive (false);
+			//PairingMessage.SetActive (true);
+			//TopPanel.SetActive (false);
+			//MiddlePanel.SetActive (false);
 
 			SensorBugStatusMessage = "";
 		}
@@ -101,19 +98,21 @@ public class SensorBugTest : MonoBehaviour
 	{
 		Reset ();
 		BluetoothLEHardwareInterface.Initialize (true, false, () => {
-
+			print("In scanning");
 			SetState (States.Scan, 0.1f);
 
 		}, (error) => {
 
 			if (_state == States.SubscribingToAccelerometer)
 			{
+				print("ERROR");
 				_pairing = true;
 				SensorBugStatusMessage = "Pairing to SensorBug";
 
 				// if we get an error when trying to subscribe to the SensorBug it is
 				// most likely because we just paired with it. Right after pairing you
 				// have to disconnect and reconnect before being able to subscribe.
+				print("In Disconnected");
 				SetState (States.Disconnect, 0.1f);
 			}
 
@@ -124,7 +123,8 @@ public class SensorBugTest : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		StartProcess ();
+		print("In start");
+	   Invoke("StartProcess",1);
 	}
 
 	// Update is called once per frame
@@ -147,12 +147,12 @@ public class SensorBugTest : MonoBehaviour
 
 						if (deviceName.Contains (DeviceName))
 						{
-							SensorBugStatusMessage = "Found a SensorBug";
+							SensorBugStatusMessage = "Found a Fitcap1";
 
 							BluetoothLEHardwareInterface.StopScan ();
 
-							PairingMessage.SetActive (false);
-							TopPanel.SetActive (true);
+						//	PairingMessage.SetActive (false);
+						//	TopPanel.SetActive (true);
 
 							// found a device with the name we want
 							// this example does not deal with finding more than one
@@ -164,7 +164,7 @@ public class SensorBugTest : MonoBehaviour
 					break;
 
 				case States.Connect:
-					SensorBugStatusMessage = "Connecting to SensorBug...";
+					SensorBugStatusMessage = "Connecting to Fitcap1...";
 
 					BluetoothLEHardwareInterface.ConnectToPeripheral (_deviceAddress, null, null, (address, serviceUUID, characteristicUUID) => {
 
@@ -182,7 +182,7 @@ public class SensorBugTest : MonoBehaviour
 							}
 						}
 					}, (disconnectAddress) => {
-						SensorBugStatusMessage = "Disconnected from SensorBug";
+						SensorBugStatusMessage = "Disconnected from Fitcap1";
 						Reset ();
 						SetState (States.Scan, 1f);
 					});
@@ -211,7 +211,7 @@ public class SensorBugTest : MonoBehaviour
 						}
 						else
 						{
-							SensorBugStatusMessage = "Error retrieving status from pairing SensorBug";
+							SensorBugStatusMessage = "Error retrieving status from pairing Fitcap1";
 						}
 					});
 					break;
@@ -235,7 +235,8 @@ public class SensorBugTest : MonoBehaviour
 					BluetoothLEHardwareInterface.SubscribeCharacteristicWithDeviceAddress (_deviceAddress, SubscribeAccelerometer.ServiceUUID, SubscribeAccelerometer.CharacteristicUUID, null, (deviceAddress, characteristric, bytes) => {
 
 						_state = States.None;
-						MiddlePanel.SetActive (true);
+					//	MiddlePanel.SetActive (true);
+					//	MiddlePanel.SetActive (true);
 
 						var sBytes = BitConverter.ToString (bytes);
 						AccelerometerText.text = "Accelerometer: " + sBytes;

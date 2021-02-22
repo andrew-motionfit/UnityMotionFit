@@ -54,8 +54,7 @@ public class ScrollHandler : MonoBehaviour
                 }
             }
            }
-        PlayerPrefs.SetString("Exerciseindex",tempstring);
-        print(tempstring);
+        LocalDatabase.instance.saveWorkout(tempstring);
         }
     public void closeAnimation()
     {

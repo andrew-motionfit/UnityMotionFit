@@ -16,8 +16,8 @@ Shader "Shapes_Shader_Pack"
 		[HDR]_FrontFace_Color("FrontFace Color", Color) = (1,1,1,0)
 		_PannerY("PannerY", Range( -1 , 1)) = 0
 		_PannerX("PannerX", Range( -1 , 1)) = 1
-		_TileX("TileX", Range( 0.05 ,0.05)) = 1
-		_TileY("TileY", Range( 0.05 ,0.05)) = 1
+		_TileX("TileX", Range( 0.05 ,10.0)) = 1
+		_TileY("TileY", Range( 0.05 ,10.0)) = 1
 		[Toggle]_Stretching("Stretching", Float) = 0
 		_DefaultShrink("DefaultShrink", Range( 0 , 100)) = 0
 		_DefaultOutlineOpacity("DefaultOutlineOpacity", Range( 0 , 25)) = 0

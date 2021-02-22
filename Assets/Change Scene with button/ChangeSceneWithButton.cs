@@ -12,6 +12,7 @@ public class ChangeSceneWithButton : MonoBehaviour
     public void LoadScene()
     {
         Fade.enabled = true;
+
         Invoke("Restart",1);
     }
     private void Restart()

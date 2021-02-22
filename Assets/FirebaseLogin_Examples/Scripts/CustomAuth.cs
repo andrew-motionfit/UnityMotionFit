@@ -45,11 +45,13 @@ public class CustomAuth : MonoBehaviour
     public void LogincallButton()
     {
         print(UserNameInput.text);
+        print(PasswordInput.text);
         Login(UserNameInput.text, PasswordInput.text);
     }
     public void SignupcallButton()
     {
-        Signup(SignUpgmail.text, PasswordInput.text, SignUpusername.text);
+        print(SignUpgmail.text +" "+ SignUppassword.text);
+        Signup(SignUpgmail.text, SignUppassword.text, SignUpusername.text);
     }
 
     private void Login(string email, string password)
@@ -71,10 +73,8 @@ public class CustomAuth : MonoBehaviour
 
              user = task.Result;
             FS.CSB.LoadScene();
-            Debug.LogFormat("User signed in successfully: {0} ({1})",
-                user.DisplayName, user.UserId);
+            LocalDatabase.instance.saveData(user.DisplayName, email, user.UserId);
 
-          
 
         });
     }

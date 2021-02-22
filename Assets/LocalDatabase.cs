@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Firebase.Database;
+using Firebase.Extensions;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +9,7 @@ public class LocalDatabase : MonoBehaviour
     public string username;
     public string gmail;
     public string UID;
-
+    public string workoutData;
     public static LocalDatabase instance;
 
     private void Awake()
@@ -48,15 +50,36 @@ public class LocalDatabase : MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void saveWorkout(string Data)
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+        Firebase.Database.DatabaseReference dbRef = Firebase.Database.FirebaseDatabase.DefaultInstance.RootReference;
+        dbRef.Child("users").Child(UID).Child("workout").SetValueAsync(Data);  
+    }
+    public void Loadworkout()
     {
-        
+        Firebase.Database.DatabaseReference dbRef = Firebase.Database.FirebaseDatabase.DefaultInstance.RootReference;
+      dbRef.Child("users").Child(UID).Child("workout").GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                // Failure
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+              workoutData = snapshot.Value.ToString();
+                // Success
+            }
+        });
+    }
+    public void repData(string Exercisename, string Data)
+    {
+        Firebase.Database.DatabaseReference dbRef = Firebase.Database.FirebaseDatabase.DefaultInstance.RootReference;
+        dbRef.Child("users").Child(UID).Child("DailyWorkout").Child(Exercisename).Child("fatigue").SetValueAsync(Data);
+        dbRef.Child("users").Child(UID).Child("DailyWorkout").Child(Exercisename).Child("Velocity").SetValueAsync(Data);
+        dbRef.Child("users").Child(UID).Child("DailyWorkout").Child(Exercisename).Child("distance").SetValueAsync(Data);
+        dbRef.Child("users").Child(UID).Child("DailyWorkout").Child(Exercisename).Child("calories ").SetValueAsync(Data);
+        dbRef.Child("users").Child(UID).Child("WeeklyWorkout").SetValueAsync("00");
+        dbRef.Child("users").Child(UID).Child("MonthlyWorkout").SetValueAsync("00");
     }
 }

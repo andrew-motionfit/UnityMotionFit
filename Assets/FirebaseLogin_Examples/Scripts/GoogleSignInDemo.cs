@@ -124,5 +124,6 @@ public class GoogleSignInDemo : MonoBehaviour
     private void AddToInformation(string us_name,string Em,string U_id) {
 
         FS.registerUser(us_name,Em,U_id);
+
     }
 }

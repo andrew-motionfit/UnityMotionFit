@@ -22,10 +22,16 @@ public class WorkoutManager : MonoBehaviour
     public List<string> selectedAnimations = new List<string>();
     public WorkoutHandler WH;
     public HorizontalSelector HS;
+    public WorkoutScriptableObject currentWorkoutSO;
+    private bool _isIKon;
+    private bool _startcounting;
+    private int anicounter;
     private void Awake()
     {
         startBt.material.SetColor("_Outline_Color", Color.blue);
-      
+        startBt.material.SetFloat("TileX", 0.05f);
+        startBt.material.SetFloat("TileY", 0.05f);
+
     }
 
     private void Start()
@@ -33,20 +39,54 @@ public class WorkoutManager : MonoBehaviour
         loadworkoutData();
      
     }
+    private void LateUpdate()
+    {
+        OnCompleteAttackAnimation();   
+    }
+
+    void OnCompleteAttackAnimation()
+    {
+        if (!_startcounting)
+            return;
+
+        if (WH.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+            LocalDatabase.instance.repData(HS.label.text,anicounter.ToString());
+            anicounter += 1;
+        }
+        // TODO: Do something when animation did complete
+    }
+    public void centerworkoutBt()
+    {
+        if (!_isIKon)
+        {
+            NewWorkout(currentWorkoutSO);
+            _isIKon = true;
+        }
+        else
+        {
+            stopWorkout(currentWorkoutSO);
+            _isIKon = false;
+        }
+    }
+
 
     #region Circle Work button
     public void NewWorkout(WorkoutScriptableObject currentWorkout)
     {
       
         startBt.material.SetColor("_Outline_Color", Color.green);
+        startBt.material.SetFloat("_TileX",10.0f);
+        startBt.material.SetFloat("_TileY", 10.0f);
 
-       
-          //  this.GetComponent<IHandleWorkouts>().NewWorkout(currentWorkout);
+        //  this.GetComponent<IHandleWorkouts>().NewWorkout(currentWorkout);
     }
 
     public void stopWorkout(WorkoutScriptableObject currentWorkout)
     {
         startBt.material.SetColor("_Outline_Color", Color.blue);
+        startBt.material.SetFloat("_TileX", 0.05f);
+        startBt.material.SetFloat("_TileY", 0.05f);
         //if (player)
         //    player.GetComponent<IHandleWorkouts>().StopWorkout(currentWorkout);
     }
@@ -87,7 +127,21 @@ public class WorkoutManager : MonoBehaviour
 
     public void loadworkoutData()
     {
-        string listAnimation = PlayerPrefs.GetString("Exerciseindex", "");
+      LocalDatabase.instance.Loadworkout();
+        StartCoroutine(loadingWorkoutData());
+      
+    }
+
+    IEnumerator loadingWorkoutData()
+    {
+
+        while (LocalDatabase.instance.workoutData.Length <= 0)
+        {
+           
+            yield return null;
+        }
+       
+        string listAnimation = LocalDatabase.instance.workoutData;
         string[] tempData = listAnimation.Split(","[0]);
         for (int i = 0; i < tempData.Length; i++)
         {
@@ -98,9 +152,8 @@ public class WorkoutManager : MonoBehaviour
 
         }
         HS.label.text = selectedAnimations[0];
-        WH.animator.SetBool(HS.label.text, true);
+        
     }
-
     public void readworkoutData()
     {
         for (int y = 0; y < nameofAnimations.Count; y++)
@@ -108,6 +161,7 @@ public class WorkoutManager : MonoBehaviour
             WH.animator.SetBool(nameofAnimations[y], false);
         }
         WH.animator.SetBool(HS.label.text, true);
+        _startcounting = true;
     }
 
     public void Doneanimation()
@@ -116,6 +170,8 @@ public class WorkoutManager : MonoBehaviour
         {
             WH.animator.SetBool(nameofAnimations[y], false);
         }
+
+        _startcounting = false;
     }
 
 }

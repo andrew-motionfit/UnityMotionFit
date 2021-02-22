@@ -16,10 +16,6 @@ public class WorkoutHandler : MonoBehaviour, IHandleWorkouts
 
     private bool usingLeftHand = false;
     private bool usingRightHand = false;
-    private void Awake()
-    {
-       // animator = GetComponent<Animator>();
-    }
     public void NewWorkout(WorkoutScriptableObject workout)
     {
         isReadingPlayerData = false;
@@ -83,4 +79,6 @@ public class WorkoutHandler : MonoBehaviour, IHandleWorkouts
 
         }
     }
+
+    
 }

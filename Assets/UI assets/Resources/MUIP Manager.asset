@@ -16,13 +16,13 @@ MonoBehaviour:
   enableExtendedColorPicker: 1
   editorHints: 1
   animatedIconColor: {r: 1, g: 1, b: 1, a: 1}
-  contextBackgroundColor: {r: 0.21568628, g: 0.29411766, b: 0.37254903, a: 1}
-  buttonThemeType: 0
+  contextBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  buttonThemeType: 1
   buttonFont: {fileID: 11400000, guid: 84dd14695854bbc43a5faa24fcf93d0d, type: 2}
   buttonFontSize: 22.5
-  buttonBorderColor: {r: 1, g: 1, b: 1, a: 1}
-  buttonFilledColor: {r: 0.1764706, g: 0.25490198, b: 0.33333334, a: 1}
-  buttonTextBasicColor: {r: 1, g: 1, b: 1, a: 1}
+  buttonBorderColor: {r: 0, g: 0, b: 0, a: 1}
+  buttonFilledColor: {r: 0, g: 0, b: 0, a: 1}
+  buttonTextBasicColor: {r: 0, g: 0, b: 0, a: 1}
   buttonTextColor: {r: 0.37254903, g: 0.40784314, b: 0.4509804, a: 1}
   buttonTextHighlightedColor: {r: 1, g: 1, b: 1, a: 1}
   buttonIconBasicColor: {r: 1, g: 1, b: 1, a: 1}
@@ -34,10 +34,10 @@ MonoBehaviour:
   dropdownAnimationType: 1
   dropdownFont: {fileID: 11400000, guid: 4bd810f1cbcb0f446a8f5a31453e243f, type: 2}
   dropdownFontSize: 25
-  dropdownColor: {r: 0.21568628, g: 0.29411766, b: 0.37254903, a: 1}
+  dropdownColor: {r: 1, g: 1, b: 1, a: 1}
   dropdownTextColor: {r: 1, g: 1, b: 1, a: 1}
   dropdownIconColor: {r: 1, g: 1, b: 1, a: 1}
-  dropdownItemColor: {r: 0.13725491, g: 0.21568628, b: 0.29411766, a: 1}
+  dropdownItemColor: {r: 1, g: 1, b: 1, a: 1}
   dropdownItemTextColor: {r: 1, g: 1, b: 1, a: 1}
   dropdownItemIconColor: {r: 255, g: 255, b: 255, a: 1}
   selectorFont: {fileID: 11400000, guid: 4bd810f1cbcb0f446a8f5a31453e243f, type: 2}
@@ -57,7 +57,7 @@ MonoBehaviour:
   modalWindowTitleColor: {r: 0, g: 0, b: 0, a: 1}
   modalWindowDescriptionColor: {r: 0, g: 0, b: 0, a: 1}
   modalWindowIconColor: {r: 0, g: 0, b: 0, a: 1}
-  modalWindowBackgroundColor: {r: 0.1764706, g: 0.25490198, b: 0.33333334, a: 1}
+  modalWindowBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
   modalWindowContentPanelColor: {r: 0, g: 0, b: 0, a: 0.019607844}
   notificationTitleFont: {fileID: 11400000, guid: fa328c1ae3ffb6b4583cf371153b0be6,
     type: 2}

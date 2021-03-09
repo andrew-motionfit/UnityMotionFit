@@ -43,7 +43,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_LightingSettings: {fileID: 192313387}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -118,9 +118,72 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!850595691 &192313387
+LightingSettings:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Settings.lighting
+  serializedVersion: 3
+  m_GIWorkflowMode: 1
+  m_EnableBakedLightmaps: 1
+  m_EnableRealtimeLightmaps: 0
+  m_RealtimeEnvironmentLighting: 1
+  m_BounceScale: 1
+  m_AlbedoBoost: 1
+  m_IndirectOutputScale: 1
+  m_UsingShadowmask: 1
+  m_BakeBackend: 1
+  m_LightmapMaxSize: 1024
+  m_BakeResolution: 40
+  m_Padding: 2
+  m_TextureCompression: 1
+  m_AO: 0
+  m_AOMaxDistance: 1
+  m_CompAOExponent: 1
+  m_CompAOExponentDirect: 0
+  m_ExtractAO: 0
+  m_MixedBakeMode: 2
+  m_LightmapsBakeMode: 1
+  m_FilterMode: 1
+  m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+  m_ExportTrainingData: 0
+  m_TrainingDataDestination: TrainingData
+  m_RealtimeResolution: 2
+  m_ForceWhiteAlbedo: 0
+  m_ForceUpdates: 0
+  m_FinalGather: 0
+  m_FinalGatherRayCount: 256
+  m_FinalGatherFiltering: 1
+  m_PVRCulling: 1
+  m_PVRSampling: 1
+  m_PVRDirectSampleCount: 32
+  m_PVRSampleCount: 500
+  m_PVREnvironmentSampleCount: 500
+  m_PVREnvironmentReferencePointCount: 2048
+  m_LightProbeSampleCountMultiplier: 4
+  m_PVRBounces: 2
+  m_PVRMinBounces: 2
+  m_PVREnvironmentMIS: 0
+  m_PVRFilteringMode: 2
+  m_PVRDenoiserTypeDirect: 0
+  m_PVRDenoiserTypeIndirect: 0
+  m_PVRDenoiserTypeAO: 0
+  m_PVRFilterTypeDirect: 0
+  m_PVRFilterTypeIndirect: 0
+  m_PVRFilterTypeAO: 0
+  m_PVRFilteringGaussRadiusDirect: 1
+  m_PVRFilteringGaussRadiusIndirect: 5
+  m_PVRFilteringGaussRadiusAO: 2
+  m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+  m_PVRFilteringAtrousPositionSigmaIndirect: 2
+  m_PVRFilteringAtrousPositionSigmaAO: 1
 --- !u!224 &270242163 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224179369329240636, guid: 8824483cce8b8314f83f933a59d1483c,
@@ -157,6 +220,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VerticalAlignment
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114852631722933792, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
@@ -322,7 +400,7 @@ PrefabInstance:
     - target: {fileID: 224179369329240636, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 205
+      value: 275
       objectReference: {fileID: 0}
     - target: {fileID: 224179369329240636, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
@@ -379,13 +457,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
-      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      propertyPath: buttonText
+      value: GET STARTED
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
-      propertyPath: buttonText
-      value: GET STARTED
+      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
@@ -622,10 +700,10 @@ AudioSource:
   m_GameObject: {fileID: 352835135}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: a9e5d729576b0a5478cec30207263369,
+  OutputAudioMixerGroup: {fileID: 243485103152924164, guid: a9e5d729576b0a5478cec30207263369,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 3247981f31be94df283adaef228316b7, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -846,11 +924,12 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GENERATE YOUR PERSONALIZED WORKOUT
+  m_text: BODY TYPE FORM
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 194c956b3d864664890e731c63fd4a02, type: 2}
   m_sharedMaterial: {fileID: 21704438749789640, guid: 194c956b3d864664890e731c63fd4a02,
@@ -860,8 +939,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1076,6 +1155,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &705507995
@@ -1145,6 +1225,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1216,6 +1297,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1290,6 +1372,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1365,6 +1448,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.21960784, g: 0.21960784, b: 0.21960784, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1424,7 +1508,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1529,6 +1613,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VerticalAlignment
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114852631722933792, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
@@ -1674,7 +1773,7 @@ PrefabInstance:
     - target: {fileID: 224179369329240636, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -275
+      value: -280
       objectReference: {fileID: 0}
     - target: {fileID: 224179369329240636, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
@@ -1738,8 +1837,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIManagerAsset: {fileID: 11400000, guid: ed935159a86a1be4cbc1c44848b24daf, type: 2}
   audioObject: {fileID: 992826854}
-  enableHoverSound: 1
-  enableClickSound: 1
+  enableHoverSound: 0
+  enableClickSound: 0
 --- !u!82 &992826854
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1752,7 +1851,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 243485103152924164, guid: a9e5d729576b0a5478cec30207263369,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 3247981f31be94df283adaef228316b7, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1857,8 +1956,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIManagerAsset: {fileID: 11400000, guid: ed935159a86a1be4cbc1c44848b24daf, type: 2}
   audioObject: {fileID: 1002747869}
-  enableHoverSound: 1
-  enableClickSound: 1
+  enableHoverSound: 0
+  enableClickSound: 0
 --- !u!82 &1002747869
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1868,10 +1967,10 @@ AudioSource:
   m_GameObject: {fileID: 1002747862}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243485103152924164, guid: a9e5d729576b0a5478cec30207263369,
+  OutputAudioMixerGroup: {fileID: 24300002, guid: a9e5d729576b0a5478cec30207263369,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 3247981f31be94df283adaef228316b7, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2026,6 +2125,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &1338072073
 Canvas:
   m_ObjectHideFlags: 0
@@ -2100,6 +2200,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VerticalAlignment
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114852631722933792, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
@@ -2265,7 +2380,7 @@ PrefabInstance:
     - target: {fileID: 224179369329240636, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -115
+      value: -95
       objectReference: {fileID: 0}
     - target: {fileID: 224179369329240636, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
@@ -2324,8 +2439,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIManagerAsset: {fileID: 11400000, guid: ed935159a86a1be4cbc1c44848b24daf, type: 2}
   audioObject: {fileID: 1405780983}
-  enableHoverSound: 1
-  enableClickSound: 1
+  enableHoverSound: 0
+  enableClickSound: 0
 --- !u!82 &1405780983
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2338,7 +2453,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: a9e5d729576b0a5478cec30207263369,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 3247981f31be94df283adaef228316b7, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2506,6 +2621,21 @@ PrefabInstance:
       propertyPath: m_VerticalAlignment
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114589370992418626, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
       propertyPath: m_Value
@@ -2660,7 +2790,7 @@ PrefabInstance:
     - target: {fileID: 224179369329240636, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -435
+      value: -455
       objectReference: {fileID: 0}
     - target: {fileID: 224179369329240636, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
@@ -2739,8 +2869,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIManagerAsset: {fileID: 11400000, guid: ed935159a86a1be4cbc1c44848b24daf, type: 2}
   audioObject: {fileID: 1616045388}
-  enableHoverSound: 1
-  enableClickSound: 1
+  enableHoverSound: 0
+  enableClickSound: 0
 --- !u!82 &1616045388
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2750,10 +2880,10 @@ AudioSource:
   m_GameObject: {fileID: 1616045386}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243485103152924164, guid: a9e5d729576b0a5478cec30207263369,
+  OutputAudioMixerGroup: {fileID: 24300002, guid: a9e5d729576b0a5478cec30207263369,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 3247981f31be94df283adaef228316b7, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2975,6 +3105,21 @@ PrefabInstance:
       propertyPath: m_VerticalAlignment
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114589370992418626, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
       propertyPath: m_Value
@@ -3129,7 +3274,7 @@ PrefabInstance:
     - target: {fileID: 224179369329240636, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 365
+      value: 463
       objectReference: {fileID: 0}
     - target: {fileID: 224179369329240636, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
@@ -3318,7 +3463,7 @@ AudioSource:
   m_GameObject: {fileID: 1865999647}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: a9e5d729576b0a5478cec30207263369,
+  OutputAudioMixerGroup: {fileID: 243485103152924164, guid: a9e5d729576b0a5478cec30207263369,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 3247981f31be94df283adaef228316b7, type: 3}
   m_PlayOnAwake: 1
@@ -3538,6 +3683,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3590,6 +3736,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VerticalAlignment
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321035803921310, guid: 8824483cce8b8314f83f933a59d1483c,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114852631722933792, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
@@ -3755,7 +3916,7 @@ PrefabInstance:
     - target: {fileID: 224179369329240636, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 45
+      value: 105
       objectReference: {fileID: 0}
     - target: {fileID: 224179369329240636, guid: 8824483cce8b8314f83f933a59d1483c,
         type: 3}
@@ -3814,8 +3975,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIManagerAsset: {fileID: 11400000, guid: ed935159a86a1be4cbc1c44848b24daf, type: 2}
   audioObject: {fileID: 2004113620}
-  enableHoverSound: 1
-  enableClickSound: 1
+  enableHoverSound: 0
+  enableClickSound: 0
 --- !u!82 &2004113620
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3828,7 +3989,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 243485103152924164, guid: a9e5d729576b0a5478cec30207263369,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 3247981f31be94df283adaef228316b7, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3913,26 +4074,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &2054655126 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3766112374600358746, guid: a4cc2200bb14f9d4f9f46d58770cdff0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1801885606}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2054655127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054655126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ca8237acf245484ebb2da366e37fd1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseXminiClamp: 440
-  mouseXmixClamp: 800
 --- !u!224 &2138292365 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224179369329240636, guid: 8824483cce8b8314f83f933a59d1483c,

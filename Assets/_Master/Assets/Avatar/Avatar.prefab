@@ -98,6 +98,7 @@ MonoBehaviour:
   playerLeftHand: {fileID: 0}
   rightHandPosition: {fileID: 2603759047017501943}
   leftHandPosition: {fileID: 4977404005722896010}
+  animator: {fileID: 0}
 --- !u!1 &3766112375253159178
 GameObject:
   m_ObjectHideFlags: 0

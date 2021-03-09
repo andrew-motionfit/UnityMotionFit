@@ -28,7 +28,7 @@ public class WorkoutManager : MonoBehaviour
     private int anicounter;
     private void Awake()
     {
-        startBt.material.SetColor("_Outline_Color", Color.blue);
+        startBt.material.SetColor("_Outline_Color", Color.black);
         startBt.material.SetFloat("TileX", 0.05f);
         startBt.material.SetFloat("TileY", 0.05f);
 
@@ -75,7 +75,7 @@ public class WorkoutManager : MonoBehaviour
     public void NewWorkout(WorkoutScriptableObject currentWorkout)
     {
       
-        startBt.material.SetColor("_Outline_Color", Color.green);
+        startBt.material.SetColor("_Outline_Color", Color.blue);
         startBt.material.SetFloat("_TileX",10.0f);
         startBt.material.SetFloat("_TileY", 10.0f);
 

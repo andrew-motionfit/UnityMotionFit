@@ -10,7 +10,7 @@ public class AccelerometerControl : MonoBehaviour
 {
 
     LowPassFilterMonoBehaviour lowPassFilterMonoBehaviour;
-
+    public 
     /*
      * In the Start function we initialize the Filter MonoBehaviour component that will the auto-update variable being filtered.
      * Then we assign initial values to it: Input script, that supplies the filter with input values, alpha parameter and initial value for the filter.

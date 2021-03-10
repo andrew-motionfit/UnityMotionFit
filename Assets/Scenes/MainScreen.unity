@@ -1500,13 +1500,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
-      propertyPath: buttonText
-      value: BLUETOOTH
+      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
-      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      propertyPath: buttonText
+      value: BLUETOOTH
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
@@ -2247,13 +2247,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
-      propertyPath: buttonText
-      value: PROFILE
+      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
-      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      propertyPath: buttonText
+      value: PROFILE
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
@@ -2664,7 +2664,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!223 &1112462066
 Canvas:
   m_ObjectHideFlags: 0
@@ -3097,13 +3096,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
-      propertyPath: buttonText
-      value: START WORKOUT
+      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
-      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      propertyPath: buttonText
+      value: START WORKOUT
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
@@ -3441,7 +3440,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1387885243}
   - component: {fileID: 1387885242}
-  - component: {fileID: 1387885241}
   m_Layer: 0
   m_Name: Camera (4)
   m_TagString: Untagged
@@ -3449,14 +3447,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1387885241
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1387885240}
-  m_Enabled: 1
 --- !u!20 &1387885242
 Camera:
   m_ObjectHideFlags: 0
@@ -3524,7 +3514,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1391454809}
   - component: {fileID: 1391454808}
-  - component: {fileID: 1391454807}
   m_Layer: 0
   m_Name: Camera (1)
   m_TagString: Untagged
@@ -3532,14 +3521,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1391454807
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1391454806}
-  m_Enabled: 1
 --- !u!20 &1391454808
 Camera:
   m_ObjectHideFlags: 0
@@ -3607,7 +3588,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1449907641}
   - component: {fileID: 1449907640}
-  - component: {fileID: 1449907639}
   m_Layer: 0
   m_Name: Camera (5)
   m_TagString: Untagged
@@ -3615,14 +3595,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1449907639
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1449907638}
-  m_Enabled: 1
 --- !u!20 &1449907640
 Camera:
   m_ObjectHideFlags: 0
@@ -3768,13 +3740,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
-      propertyPath: buttonText
-      value: CREATE WORKOUT
+      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
-      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      propertyPath: buttonText
+      value: CREATE WORKOUT
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
@@ -4266,7 +4238,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1598614085}
   - component: {fileID: 1598614084}
-  - component: {fileID: 1598614083}
   m_Layer: 0
   m_Name: Camera (3)
   m_TagString: Untagged
@@ -4274,14 +4245,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1598614083
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1598614082}
-  m_Enabled: 1
 --- !u!20 &1598614084
 Camera:
   m_ObjectHideFlags: 0
@@ -4349,7 +4312,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1621548706}
   - component: {fileID: 1621548705}
-  - component: {fileID: 1621548704}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -4357,14 +4319,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1621548704
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621548703}
-  m_Enabled: 1
 --- !u!20 &1621548705
 Camera:
   m_ObjectHideFlags: 0
@@ -4785,7 +4739,6 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &2053269437

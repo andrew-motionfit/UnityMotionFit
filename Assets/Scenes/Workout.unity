@@ -6090,6 +6090,8 @@ GameObject:
   - component: {fileID: 1370509582}
   - component: {fileID: 1370509581}
   - component: {fileID: 1370509583}
+  - component: {fileID: 1370509584}
+  - component: {fileID: 1370509585}
   m_Layer: 0
   m_Name: WorkoutManager
   m_TagString: Untagged
@@ -6178,9 +6180,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRightHand: {fileID: 1810863279}
   playerLeftHand: {fileID: 1033796749}
+<<<<<<< Updated upstream
   rightHandPosition: {fileID: 0}
   leftHandPosition: {fileID: 0}
   animator: {fileID: 0}
+=======
+  rightHandPosition: {fileID: 2603759046226280185}
+  leftHandPosition: {fileID: 4977404004394785924}
+  animator: {fileID: 377136893}
+--- !u!114 &1370509584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370509580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644ffddc2ae747a4ead8e81fa37211a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  csvFile: {fileID: 4900000, guid: 646b4761eb9423e4cadb79e22d4dec8b, type: 3}
+--- !u!114 &1370509585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370509580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 703afc02b56dff846b0928af836b337c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _finalScorePath: /AllUser/{0}/ExerciseData.csv
+  OnUploadStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUploadComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUploadFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  startimg: {fileID: 0}
+  csvFile: {fileID: 4900000, guid: 646b4761eb9423e4cadb79e22d4dec8b, type: 3}
+>>>>>>> Stashed changes
 --- !u!1 &1390083871
 GameObject:
   m_ObjectHideFlags: 0

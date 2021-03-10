@@ -18,12 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Workout.unity
     guid: 5896d2f9b0290c54da9986af0ecad1a8
   - enabled: 1
-    path: Assets/Scenes/InputScreen.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
     path: Assets/Scenes/CreateWorkout.unity
     guid: 4f99b5e54ed46364799dffc9e9de1c1a
-  - enabled: 1
-    path: Assets/Bluetooth/Shatalmic/Example/FitCapTest/FitCapTest.unity
-    guid: 3658e0f3297fcfb45a2abe48ad312cb6
   m_configObjects: {}

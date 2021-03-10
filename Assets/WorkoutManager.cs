@@ -25,7 +25,7 @@ public class WorkoutManager : MonoBehaviour
     public WorkoutScriptableObject currentWorkoutSO;
     private bool _isIKon;
     private bool _startcounting;
-    private int anicounter;
+    private float anicounter;
     private void Awake()
     {
         startBt.material.SetColor("_Outline_Color", Color.black);
@@ -37,23 +37,33 @@ public class WorkoutManager : MonoBehaviour
     private void Start()
     {
         loadworkoutData();
-     
+        InvokeRepeating("OnCompleteAttackAnimation",2,2);
     }
     private void LateUpdate()
     {
-        OnCompleteAttackAnimation();   
+       
+        
+       
     }
 
     void OnCompleteAttackAnimation()
     {
-        if (!_startcounting)
+        if (!_isIKon)
             return;
 
-        if (WH.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-        {
-            LocalDatabase.instance.repData(HS.label.text,anicounter.ToString());
-            anicounter += 1;
-        }
+        anicounter += 0.1f;
+
+        anicounter += 0.1f;
+        GameObject.FindObjectOfType<CSVManager>().addData(HS.label.text, anicounter.ToString(), anicounter.ToString(), anicounter.ToString());
+        //LocalDatabase.instance.repData();
+        //if (!_startcounting)
+        //    return;
+
+        //if (WH.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        //{
+        //    LocalDatabase.instance.repData(HS.label.text,anicounter.ToString());
+        //    anicounter += 1;
+        //}
         // TODO: Do something when animation did complete
     }
     public void centerworkoutBt()
@@ -172,6 +182,7 @@ public class WorkoutManager : MonoBehaviour
         }
 
         _startcounting = false;
+        LocalDatabase.instance.repData();
     }
 
 }

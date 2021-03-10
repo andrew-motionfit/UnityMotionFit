@@ -2228,6 +2228,7 @@ MonoBehaviour:
   gmail: 
   UID: 
   workoutData: 
+  Photo: {fileID: 0}
 --- !u!4 &893686864
 Transform:
   m_ObjectHideFlags: 0

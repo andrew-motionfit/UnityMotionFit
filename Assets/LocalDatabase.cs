@@ -1,14 +1,8 @@
 ﻿using Firebase.Database;
 using Firebase.Extensions;
-using Firebase.Storage;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Assertions;
-using UnityEngine.UI;
 
 public class LocalDatabase : MonoBehaviour
 {
@@ -31,15 +25,6 @@ public class LocalDatabase : MonoBehaviour
         }
 
        
-    }
-    private void Start()
-    {
-        FirebaseStorage storage = FirebaseStorage.DefaultInstance;
-
-        // Create a storage reference from our storage service
-        StorageReference storageRef =
-            storage.GetReferenceFromUrl("gs://motionfit-878e2.appspot.com/");
-
     }
 
     public List<string> Getvalue()
@@ -87,9 +72,14 @@ public class LocalDatabase : MonoBehaviour
             }
         });
     }
-    public Image Photo;
-    public void repData()
+    public void repData(string Exercisename, string Data)
     {
-        GameObject.FindObjectOfType<UploadGameData>().Trigger();
+        Firebase.Database.DatabaseReference dbRef = Firebase.Database.FirebaseDatabase.DefaultInstance.RootReference;
+        dbRef.Child("users").Child(UID).Child("DailyWorkout").Child(Exercisename).Child("fatigue").SetValueAsync(Data);
+        dbRef.Child("users").Child(UID).Child("DailyWorkout").Child(Exercisename).Child("Velocity").SetValueAsync(Data);
+        dbRef.Child("users").Child(UID).Child("DailyWorkout").Child(Exercisename).Child("distance").SetValueAsync(Data);
+        dbRef.Child("users").Child(UID).Child("DailyWorkout").Child(Exercisename).Child("calories ").SetValueAsync(Data);
+        dbRef.Child("users").Child(UID).Child("WeeklyWorkout").SetValueAsync("00");
+        dbRef.Child("users").Child(UID).Child("MonthlyWorkout").SetValueAsync("00");
     }
 }

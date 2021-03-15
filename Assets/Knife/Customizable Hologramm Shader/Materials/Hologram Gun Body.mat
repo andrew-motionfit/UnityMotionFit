@@ -176,3 +176,4 @@ Material:
     - _MaskCenter: {r: 0, g: 0, b: 0, a: 0}
     - _MaskSize: {r: 0, g: 0, b: 0, a: 0}
     - _RandomGlitchOffset: {r: -0.5, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

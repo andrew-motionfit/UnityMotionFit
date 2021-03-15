@@ -12,10 +12,12 @@ public class CSVManager : MonoBehaviour
 
 	private char lineSeperater = '\n'; // It defines line seperate character
 	private char fieldSeperator = ','; // It defines field seperate chracter
-
+	public int indexer = 0;
 	void Start()
 	{
 		readData();
+		InvokeRepeating("waitforCall",2,2);
+
 	}
 
 	// Read data from CSV file
@@ -32,11 +34,17 @@ public class CSVManager : MonoBehaviour
 			//contentArea.text += '\n';
 		}
 	}
+
+	public void waitforCall()
+    {
+		addData(indexer.ToString(),"1a","1b","1c");
+		indexer += 1;
+    }
 	// Add data to CSV file
 	public void addData(string ExerciseName,string Velocity,string Calories,string Fatigue)
 	{
 		// Following line adds data to CSV file
-		File.AppendAllText(getPath() + "/Resources/ExerciseData.csv", lineSeperater + ExerciseName + fieldSeperator + Velocity+ fieldSeperator+ Calories+fieldSeperator+Fatigue);
+		File.AppendAllText(getPath() + "/Resources/ExerciseData.csv",lineSeperater+ExerciseName + fieldSeperator + Velocity+ fieldSeperator+ Calories+fieldSeperator+Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + "1");
 		// Following lines refresh the edotor and print data
 	//	rollNoInputField.text = "";
 	//	nameInputField.text = "";

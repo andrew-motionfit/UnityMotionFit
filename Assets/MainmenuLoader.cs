@@ -18,6 +18,7 @@ public class MainmenuLoader : MonoBehaviour
     }
     public void mainbt(int level)
     {
+        print("aa");
         FadeImage.SetActive(true);
         Invoke("changeLevel", 1);
         Levelint = level;

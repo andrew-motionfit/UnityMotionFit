@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: c31f14a833776954eae865490854b23f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - workoutController: {instanceID: 0}
+  - rightHandAsset: {fileID: 6575888246996862543, guid: 9a459b49c41dd334da2d58bb601c2e87,
+      type: 3}
+  - leftHandAsset: {fileID: 6575888246996862543, guid: 9a459b49c41dd334da2d58bb601c2e87,
+      type: 3}
+  - twoHandedAsset: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

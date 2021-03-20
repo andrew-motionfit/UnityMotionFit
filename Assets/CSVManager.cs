@@ -12,26 +12,30 @@ public class CSVManager : MonoBehaviour
 
 	private char lineSeperater = '\n'; // It defines line seperate character
 	private char fieldSeperator = ','; // It defines field seperate chracter
-	public int indexer = 0;
+	private int indexer = 0;
+	public AccelerometerObjectControl AOC;
+	public int rdIndexX, rdIndexY, rdIndexZ;
 	void Start()
 	{
-		readData();
-		InvokeRepeating("waitforCall",2,2);
+
+		print("Reading will start in 5 Sec wait");
+	    Invoke("readData",5);
+		//InvokeRepeating("waitforCall",2,2);
 
 	}
 
 	// Read data from CSV file
 	private void readData()
 	{
-		string[] records = csvFile.text.Split(lineSeperater);
-		foreach (string record in records)
+		string[] records = csvFile.text.Split("\n"[0]);
+		for(int i = 0; i < records.Length; i++)
 		{
-			string[] fields = record.Split(fieldSeperator);
-			foreach (string field in fields)
-			{
-			//	contentArea.text += field + "\t";
-			}
-			//contentArea.text += '\n';
+			
+		string[] temprecords	=	records[i].Split(","[0]);
+			print("Adding data to CSV");
+			Vector3 FliteredValues = AOC.filterPos(new Vector3(float.Parse(temprecords[rdIndexX]),float.Parse(temprecords[rdIndexY]),float.Parse(temprecords[rdIndexZ])));
+			addData(FliteredValues.x.ToString(),FliteredValues.y.ToString(),FliteredValues.z.ToString(),"1");
+          
 		}
 	}
 
@@ -41,10 +45,10 @@ public class CSVManager : MonoBehaviour
 		indexer += 1;
     }
 	// Add data to CSV file
-	public void addData(string ExerciseName,string Velocity,string Calories,string Fatigue)
+	public void addData(string Xmg,string Ymg,string zmg, string rep)
 	{
 		// Following line adds data to CSV file
-		File.AppendAllText(getPath() + "/Resources/ExerciseData.csv",lineSeperater+ExerciseName + fieldSeperator + Velocity+ fieldSeperator+ Calories+fieldSeperator+Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + Fatigue + fieldSeperator + "1");
+		File.AppendAllText(getPath() + "/Resources/ExerciseData.csv",lineSeperater+ Xmg + fieldSeperator + Ymg + fieldSeperator+ zmg + fieldSeperator+ rep);
 		// Following lines refresh the edotor and print data
 	//	rollNoInputField.text = "";
 	//	nameInputField.text = "";

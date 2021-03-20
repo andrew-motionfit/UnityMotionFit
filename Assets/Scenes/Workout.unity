@@ -3169,7 +3169,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 567091558}
-  - component: {fileID: 567091557}
   - component: {fileID: 567091556}
   m_Layer: 0
   m_Name: Filter
@@ -3190,20 +3189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9232b383a89eb743be28efb1a63aa4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldUseComponent: 1
   a: 0.05
---- !u!114 &567091557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 567091555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75d5150e3c168484da41ca36eee8ece0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &567091558
 Transform:
   m_ObjectHideFlags: 0
@@ -6168,8 +6154,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644ffddc2ae747a4ead8e81fa37211a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  csvFile: {fileID: 4900000, guid: 38692447f6f7ec344a4a8ce1d6458c84, type: 3}
-  indexer: 0
+  csvFile: {fileID: 4900000, guid: 3512370920febf949ad09f34eadd8eea, type: 3}
+  AOC: {fileID: 567091556}
+  rdIndexX: 5
+  rdIndexY: 6
+  rdIndexZ: 7
 --- !u!1 &1390083871
 GameObject:
   m_ObjectHideFlags: 0

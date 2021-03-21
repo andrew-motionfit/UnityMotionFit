@@ -9,6 +9,7 @@ public class LocalDatabase : MonoBehaviour
     public string username;
     public string gmail;
     public string UID;
+   
     public string workoutData;
     public static LocalDatabase instance;
 
@@ -31,6 +32,7 @@ public class LocalDatabase : MonoBehaviour
     {
         username = PlayerPrefs.GetString("username", "");
         gmail = PlayerPrefs.GetString("gmail", "");
+        
         UID = PlayerPrefs.GetString("uid", "");
         List<string> InfoData = new List<string>();
         InfoData.Add(username);
@@ -47,7 +49,7 @@ public class LocalDatabase : MonoBehaviour
         PlayerPrefs.SetString("username",username);
         PlayerPrefs.SetString("gmail", gmail);
         PlayerPrefs.SetString("uid", UID);
-
+       
     }
 
     public void saveWorkout(string Data)

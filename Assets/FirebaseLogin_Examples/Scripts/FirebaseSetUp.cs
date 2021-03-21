@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 public class FirebaseSetUp : MonoBehaviour
 {
@@ -31,8 +32,22 @@ public class FirebaseSetUp : MonoBehaviour
 
         if(PlayerPrefs.GetString("uid","").Length > 0)
         {
-            LocalDatabase.instance.Getvalue();
-            CSB.LoadScene();
+           List<string> tempSignData = LocalDatabase.instance.Getvalue();
+            if (PlayerPrefs.GetString("loginMethod", "C") == "C")
+            {
+                print(tempSignData[1] );
+                GetComponent<CustomAuth>().Login(tempSignData[1], PlayerPrefs.GetString("password", "0").ToString());
+            }
+            else if (PlayerPrefs.GetString("loginMethod", "C") == "F")
+            {
+                GetComponent<facebookLogin>().FBlogin();
+            }
+            else if (PlayerPrefs.GetString("loginMethod", "C") == "G")
+            {
+                GetComponent<GoogleSignInDemo>().SignInWithGoogle();
+            }
+
+            //   CSB.LoadScene();
             return;
         }
 

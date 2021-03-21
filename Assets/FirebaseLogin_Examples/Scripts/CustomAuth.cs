@@ -44,8 +44,7 @@ public class CustomAuth : MonoBehaviour
 
     public void LogincallButton()
     {
-        print(UserNameInput.text);
-        print(PasswordInput.text);
+      
         Login(UserNameInput.text, PasswordInput.text);
     }
     public void SignupcallButton()
@@ -54,8 +53,9 @@ public class CustomAuth : MonoBehaviour
         Signup(SignUpgmail.text, SignUppassword.text, SignUpusername.text);
     }
 
-    private void Login(string email, string password)
+    public void Login(string email, string password)
     {
+        print(password);
         auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
         {
             if (task.IsCanceled)
@@ -68,13 +68,17 @@ public class CustomAuth : MonoBehaviour
                 Debug.LogError("SignInWithEmailAndPasswordAsync error: " + task.Exception);
                 if (task.Exception.InnerExceptions.Count > 0)
                     UpdateErrorMessage(task.Exception.InnerExceptions[0].Message);
+
+
+                FS.CSB.Fade.enabled = false;
                 return;
             }
 
              user = task.Result;
             FS.CSB.LoadScene();
             LocalDatabase.instance.saveData(user.DisplayName, email, user.UserId);
-
+             PlayerPrefs.SetString("password", password);
+            PlayerPrefs.SetString("loginMethod", "C");
 
         });
     }

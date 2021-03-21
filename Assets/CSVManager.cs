@@ -28,16 +28,18 @@ public class CSVManager : MonoBehaviour
 	private void readData()
 	{
 		string[] records = csvFile.text.Split("\n"[0]);
-		for(int i = 0; i < records.Length; i++)
+		for (int i = 0; i < records.Length; i++)
 		{
-			
-		string[] temprecords	=	records[i].Split(","[0]);
-			print("Adding data to CSV");
-			Vector3 FliteredValues = AOC.filterPos(new Vector3(float.Parse(temprecords[rdIndexX]),float.Parse(temprecords[rdIndexY]),float.Parse(temprecords[rdIndexZ])));
-			addData(FliteredValues.x.ToString(),FliteredValues.y.ToString(),FliteredValues.z.ToString(),"1");
+
+			string[] temprecords = records[i].Split(","[0]);
+			if (temprecords.Length > 6)
+			{
+				addData(temprecords[5], temprecords[6], temprecords[7], "1");
+			}
           
 		}
 	}
+
 
 	public void waitforCall()
     {
@@ -47,8 +49,9 @@ public class CSVManager : MonoBehaviour
 	// Add data to CSV file
 	public void addData(string Xmg,string Ymg,string zmg, string rep)
 	{
+		Vector3 FliteredValues = AOC.filterPos(new Vector3(float.Parse(Xmg), float.Parse(Ymg), float.Parse(zmg)));
 		// Following line adds data to CSV file
-		File.AppendAllText(getPath() + "/Resources/ExerciseData.csv",lineSeperater+ Xmg + fieldSeperator + Ymg + fieldSeperator+ zmg + fieldSeperator+ rep);
+		File.AppendAllText(getPath() + "/Resources/ExerciseData.csv",lineSeperater+ FliteredValues.x.ToString() + fieldSeperator + FliteredValues.y.ToString() + fieldSeperator+ FliteredValues.z.ToString() + fieldSeperator+ rep);
 		// Following lines refresh the edotor and print data
 	//	rollNoInputField.text = "";
 	//	nameInputField.text = "";

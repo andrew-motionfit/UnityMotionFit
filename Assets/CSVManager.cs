@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.IO;
+using System.Collections.Generic;
 
 public class CSVManager : MonoBehaviour
 {
@@ -14,12 +15,11 @@ public class CSVManager : MonoBehaviour
 	private char fieldSeperator = ','; // It defines field seperate chracter
 	private int indexer = 0;
 	public AccelerometerObjectControl AOC;
-	public int rdIndexX, rdIndexY, rdIndexZ;
 	void Start()
 	{
 
-		print("Reading will start in 5 Sec wait");
-	    Invoke("readData",5);
+		//print("Reading will start in 5 Sec wait");
+	    Invoke("readData",1);
 		//InvokeRepeating("waitforCall",2,2);
 
 	}
@@ -27,6 +27,7 @@ public class CSVManager : MonoBehaviour
 	// Read data from CSV file
 	private void readData()
 	{
+		indexer = 0;
 		string[] records = csvFile.text.Split("\n"[0]);
 		for (int i = 0; i < records.Length; i++)
 		{
@@ -34,32 +35,45 @@ public class CSVManager : MonoBehaviour
 			string[] temprecords = records[i].Split(","[0]);
 			if (temprecords.Length > 6)
 			{
-				addData(temprecords[5], temprecords[6], temprecords[7], "1");
+				//addData(temprecords[5], temprecords[6], temprecords[7], "1");
+				Vector3 FliteredValues = AOC.filterPos(new Vector3(float.Parse(temprecords[5]), float.Parse(temprecords[6]), float.Parse(temprecords[7])));
+				addData(FliteredValues.x.ToString(),FliteredValues.y.ToString(),FliteredValues.z.ToString(),"1");
 			}
           
 		}
+		
+		
+		//StartCoroutine(addValue());
 	}
-
+	
 
 	public void waitforCall()
     {
-		addData(indexer.ToString(),"1a","1b","1c");
-		indexer += 1;
+		//addData(indexer.ToString(),"1a","1b","1c");
+		//indexer += 1;
     }
 	// Add data to CSV file
-	public void addData(string Xmg,string Ymg,string zmg, string rep)
+	public void addData(string X,string Y, string Z, string rep)
 	{
-		Vector3 FliteredValues = AOC.filterPos(new Vector3(float.Parse(Xmg), float.Parse(Ymg), float.Parse(zmg)));
+
 		// Following line adds data to CSV file
-		File.AppendAllText(getPath() + "/Resources/ExerciseData.csv",lineSeperater+ FliteredValues.x.ToString() + fieldSeperator + FliteredValues.y.ToString() + fieldSeperator+ FliteredValues.z.ToString() + fieldSeperator+ rep);
+		if (indexer > 0)
+		{
+			File.AppendAllText(getPath() + "/Resources/ExerciseData.csv", lineSeperater + X + fieldSeperator + Y + fieldSeperator + Z + fieldSeperator + rep);
+		}
+        else
+        {
+			File.AppendAllText(getPath() + "/Resources/ExerciseData.csv", X + fieldSeperator + Y + fieldSeperator + Z + fieldSeperator + rep);
+			indexer += 1;
+		}
 		// Following lines refresh the edotor and print data
 	//	rollNoInputField.text = "";
 	//	nameInputField.text = "";
-	//	contentArea.text = "";
-#if UNITY_EDITOR
-		UnityEditor.AssetDatabase.Refresh();
-#endif
-		readData();
+//	//	contentArea.text = "";
+//#if UNITY_EDITOR
+//		UnityEditor.AssetDatabase.Refresh();
+//#endif
+//		readData();
 	}
 
 	// Get path for given CSV file

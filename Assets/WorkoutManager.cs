@@ -98,6 +98,7 @@ public class WorkoutManager : MonoBehaviour
     #endregion
     public void switchBt(int counter)
     {
+        print("HERE");
         switch (counter)
         {
             case 1:

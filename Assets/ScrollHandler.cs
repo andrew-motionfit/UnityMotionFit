@@ -18,6 +18,12 @@ public class ScrollHandler : MonoBehaviour
     public Image circle;
     public Button closebutton;
     public GameObject startworkout;
+    [Header("POPUP")]
+    public GameObject PopupPanel1;
+    public GameObject PopupPanel2;
+    public TextMeshProUGUI Poptitle;
+    public Transform PopupList;
+    public GameObject PopClone;
     private void Start()
     {
        
@@ -29,7 +35,7 @@ public class ScrollHandler : MonoBehaviour
             clone.GetComponentInChildren<TextMeshProUGUI>().text = buttonname[i];
             clone.gameObject.SetActive(true);
             createExercise.Add(clone);
-            clone.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(delegate { addExercise(clone.GetComponentInChildren<TextMeshProUGUI>().text); });
+            clone.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(delegate { preaddExercise(clone.GetComponentInChildren<TextMeshProUGUI>().text); });
         }
 
         
@@ -65,6 +71,32 @@ public class ScrollHandler : MonoBehaviour
         closebutton.gameObject.SetActive(false);
         circle.gameObject.SetActive(false);
     }
+
+    public void preaddExercise(string a)
+    {
+        Poptitle.text = a;
+        PopupPanel1.SetActive(true); 
+    }
+
+    public void enterSet(TMP_InputField settxt)
+    {
+        if (settxt.text.Length == 0)
+            return;
+
+       
+        print(settxt.text);
+        int tempset = int.Parse(settxt.text);
+       
+        for (int i = 0; i < tempset; i++)
+        {
+           GameObject clone = Instantiate(PopClone,Vector3.zero,Quaternion.identity);
+            clone.transform.SetParent(PopupList);
+            clone.SetActive(true);
+
+        }
+       
+        PopupPanel2.SetActive(true);
+    }
     public void addExercise(string a)
     {
         for (int y = 0; y < AnimatorParameters.Count; y++)
@@ -99,6 +131,7 @@ public class ScrollHandler : MonoBehaviour
                     selectedExerciseobj.Add(clone);
                     closebutton.gameObject.SetActive(true);
                     circle.gameObject.SetActive(true);
+                    PopupPanel1.SetActive(true);
                     if (tempparameter.Length > 1)
                     {
                         ani.SetBool(tempparameter, true);

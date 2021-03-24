@@ -24,6 +24,7 @@ public class ScrollHandler : MonoBehaviour
     public TextMeshProUGUI Poptitle;
     public Transform PopupList;
     public GameObject PopClone;
+    private List<GameObject> tempSetList = new List<GameObject>();
     private void Start()
     {
        
@@ -74,8 +75,42 @@ public class ScrollHandler : MonoBehaviour
 
     public void preaddExercise(string a)
     {
+        for (int i = 0; i < createExercise.Count; i++)
+        {
+            if (a == createExercise[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text)
+            {
+                if (createExercise[i].transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>().color.a <= 0)
+                {
+
+                }
+                else
+                {
+                    selectedExercise.Remove(a);
+                    for (int z = 0; z < selectedExerciseobj.Count; z++)
+                    {
+
+                        if (a == selectedExerciseobj[z].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text)
+                        {
+                            GameObject temp = selectedExerciseobj[z];
+                            Destroy(temp);
+                            selectedExerciseobj.Remove(selectedExerciseobj[z]);
+                            closebutton.gameObject.SetActive(false);
+                            circle.gameObject.SetActive(false);
+                            if (a.Length > 1)
+                            {
+                                ani.SetBool(a, false);
+                                a = "";
+                            }
+
+                        }
+                    }
+                    return;
+                }
+            }
+        }
         Poptitle.text = a;
-        PopupPanel1.SetActive(true); 
+        PopupPanel1.SetActive(true);
+
     }
 
     public void enterSet(TMP_InputField settxt)
@@ -84,18 +119,31 @@ public class ScrollHandler : MonoBehaviour
             return;
 
        
-        print(settxt.text);
+
         int tempset = int.Parse(settxt.text);
        
         for (int i = 0; i < tempset; i++)
         {
            GameObject clone = Instantiate(PopClone,Vector3.zero,Quaternion.identity);
             clone.transform.SetParent(PopupList);
+            clone.transform.localScale = Vector3.one;
             clone.SetActive(true);
-
+            int temp = i + 1;
+            clone.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text =temp.ToString();
+            tempSetList.Add(clone);
         }
        
         PopupPanel2.SetActive(true);
+    }
+
+    public void postaddExercise()
+    {
+        foreach(GameObject objs in tempSetList)
+        {
+            Destroy(objs);
+        }
+        print(Poptitle.text);
+        addExercise(Poptitle.text);
     }
     public void addExercise(string a)
     {
@@ -116,11 +164,10 @@ public class ScrollHandler : MonoBehaviour
 
         for (int i = 0; i < createExercise.Count; i++)
         {
-
+            
             if (a == createExercise[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text)
             {
-                if(createExercise[i].transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>().color.a <= 0)
-                {
+          
                     selectedExercise.Add(a);
                     
                     GameObject clone = Instantiate(selectedprefab, selectedParet.transform.position, Quaternion.identity);
@@ -131,36 +178,13 @@ public class ScrollHandler : MonoBehaviour
                     selectedExerciseobj.Add(clone);
                     closebutton.gameObject.SetActive(true);
                     circle.gameObject.SetActive(true);
-                    PopupPanel1.SetActive(true);
+                    
                     if (tempparameter.Length > 1)
                     {
                         ani.SetBool(tempparameter, true);
                         tempparameter = "";
                     }
-                }
-                else
-                {
-                    selectedExercise.Remove(a);
-                    for (int z = 0; z < selectedExerciseobj.Count; z++)
-                    {
-                       
-                        if (a == selectedExerciseobj[z].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text)
-                        {
-                            GameObject temp = selectedExerciseobj[z];
-                            Destroy(temp);
-                            selectedExerciseobj.Remove(selectedExerciseobj[z]);
-                            closebutton.gameObject.SetActive(false);
-                            circle.gameObject.SetActive(false);
-                            if (tempparameter.Length > 1)
-                            {
-                                ani.SetBool(tempparameter, false);
-                                tempparameter = "";
-                            }
-
-                        }
-                    }
-                   
-                }
+              
             }
         }
          

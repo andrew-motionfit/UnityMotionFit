@@ -2904,7 +2904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &567091556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2912,12 +2912,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567091555}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9232b383a89eb743be28efb1a63aa4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: 0.1
+  a: 0.05
 --- !u!4 &567091558
 Transform:
   m_ObjectHideFlags: 0
@@ -2948,7 +2948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &572307532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2956,12 +2956,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572307531}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 644ffddc2ae747a4ead8e81fa37211a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  csvFile: {fileID: 4900000, guid: 3512370920febf949ad09f34eadd8eea, type: 3}
+  csvFile: {fileID: 4900000, guid: 8d05ddf3fa48ec446937d2c64154cc12, type: 3}
   AOC: {fileID: 567091556}
 --- !u!4 &572307533
 Transform:

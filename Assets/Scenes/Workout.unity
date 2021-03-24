@@ -2976,7 +2976,7 @@ PrefabInstance:
     - target: {fileID: 224809411152755106, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -454
+      value: -610
       objectReference: {fileID: 0}
     - target: {fileID: 224809411152755106, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
@@ -4023,7 +4023,7 @@ PrefabInstance:
     - target: {fileID: 224809411152755106, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -454
+      value: -610
       objectReference: {fileID: 0}
     - target: {fileID: 224809411152755106, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
@@ -4178,7 +4178,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: 3
     m_CustomResolution: -1
     m_Strength: 1
@@ -4805,8 +4805,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.0000076294, y: 2585}
-  m_SizeDelta: {x: 1601.6741, y: 496.61}
+  m_AnchoredPosition: {x: 0, y: 2747}
+  m_SizeDelta: {x: 1499.9, y: 519.7244}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1100488745
 MonoBehaviour:
@@ -4856,8 +4856,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5878,8 +5878,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -387.85}
-  m_SizeDelta: {x: 1434.9305, y: 384.35}
+  m_AnchoredPosition: {x: 0, y: -428}
+  m_SizeDelta: {x: 1651.8271, y: 485.7566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1300303890
 MonoBehaviour:
@@ -5901,7 +5901,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SHOULDER PRESS 3 SET, 8 REPS
+  m_text: WORKOUT ROOM
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 194c956b3d864664890e731c63fd4a02, type: 2}
   m_sharedMaterial: {fileID: 21704438749789640, guid: 194c956b3d864664890e731c63fd4a02,
@@ -5929,8 +5929,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 140
-  m_fontSizeBase: 140
+  m_fontSize: 175
+  m_fontSizeBase: 175
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

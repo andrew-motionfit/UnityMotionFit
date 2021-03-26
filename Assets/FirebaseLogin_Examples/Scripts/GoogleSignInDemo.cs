@@ -77,6 +77,7 @@ public class GoogleSignInDemo : MonoBehaviour
         {
             FS.CSB.infotxt.text = "User with " + task.Result.Email + " already have a account please try sign in";
             FS.CSB.WarningPanel.SetActive(true);
+            FS.CSB.Fade.enabled = false;
         }
         else
         {
@@ -85,6 +86,7 @@ public class GoogleSignInDemo : MonoBehaviour
             CurrentUsername = task.Result.DisplayName;
             CurrentEmail = task.Result.Email;
             CurrentUid = task.Result.UserId;
+            PlayerPrefs.SetString("loginMethod", "G");
         }
     }
 
@@ -95,8 +97,8 @@ public class GoogleSignInDemo : MonoBehaviour
         auth.SignInWithCredentialAsync(credential).ContinueWithOnMainThread(task =>
         {
                 AddToInformation(CurrentUsername,CurrentEmail,CurrentUid);
-                
-            
+           
+
         });
     }
 

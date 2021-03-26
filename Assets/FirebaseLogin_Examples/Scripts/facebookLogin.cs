@@ -90,13 +90,14 @@ public class facebookLogin : MonoBehaviour
                         Debug.LogError("SignInWithCredentialAsync encountered an error: " + task.Exception);
                         FS.CSB.infotxt.text = "User with " + task.Result.Email + " already have a account please try sign in";
                         FS.CSB.WarningPanel.SetActive(true);
+                        FS.CSB.Fade.enabled = false;
                         return;
                     }
 
                     Firebase.Auth.FirebaseUser newUser = task.Result;
                     print(task.Exception);
                     Debug.LogFormat("User signed in successfully: {0} ({1})  ",newUser.DisplayName, newUser.UserId);
-                   
+                    PlayerPrefs.SetString("loginMethod", "F");
                     FS.registerUser(newUser.DisplayName,newUser.Email,newUser.UserId);
                           
                 });

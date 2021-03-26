@@ -214,6 +214,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: SignIn_Password_InputField
       objectReference: {fileID: 0}
+    - target: {fileID: 114188815111676256, guid: a77e2c4748edcd5429717838a8f70fb0,
+        type: 3}
+      propertyPath: UIManagerAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d3bad88d08e12a8448b3b1b7ad309425,
+        type: 2}
     - target: {fileID: 114304000811751932, guid: a77e2c4748edcd5429717838a8f70fb0,
         type: 3}
       propertyPath: m_textAlignment
@@ -1426,7 +1432,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 018f518e64f9042a78c76f75bb64d946, type: 3}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1766,6 +1772,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114188815111676256, guid: a77e2c4748edcd5429717838a8f70fb0,
+        type: 3}
+      propertyPath: UIManagerAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d3bad88d08e12a8448b3b1b7ad309425,
+        type: 2}
     - target: {fileID: 114304000811751932, guid: a77e2c4748edcd5429717838a8f70fb0,
         type: 3}
       propertyPath: m_textAlignment
@@ -2758,6 +2770,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Password_InputField
       objectReference: {fileID: 0}
+    - target: {fileID: 114188815111676256, guid: a77e2c4748edcd5429717838a8f70fb0,
+        type: 3}
+      propertyPath: UIManagerAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d3bad88d08e12a8448b3b1b7ad309425,
+        type: 2}
     - target: {fileID: 114304000811751932, guid: a77e2c4748edcd5429717838a8f70fb0,
         type: 3}
       propertyPath: m_textAlignment
@@ -3231,6 +3249,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Username_InputField
       objectReference: {fileID: 0}
+    - target: {fileID: 114188815111676256, guid: a77e2c4748edcd5429717838a8f70fb0,
+        type: 3}
+      propertyPath: UIManagerAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d3bad88d08e12a8448b3b1b7ad309425,
+        type: 2}
     - target: {fileID: 114304000811751932, guid: a77e2c4748edcd5429717838a8f70fb0,
         type: 3}
       propertyPath: m_textAlignment
@@ -4857,6 +4881,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: SignIn_Email_InputField
       objectReference: {fileID: 0}
+    - target: {fileID: 114188815111676256, guid: a77e2c4748edcd5429717838a8f70fb0,
+        type: 3}
+      propertyPath: UIManagerAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d3bad88d08e12a8448b3b1b7ad309425,
+        type: 2}
     - target: {fileID: 114304000811751932, guid: a77e2c4748edcd5429717838a8f70fb0,
         type: 3}
       propertyPath: m_textAlignment

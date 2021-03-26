@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Michsky.UI.ModernUIPack;
 using UnityEngine.Events;
-using TMPro;
+
 public class WorkoutManager : MonoBehaviour
 {
     [SerializeField] private GameObject player = null;
@@ -26,10 +26,6 @@ public class WorkoutManager : MonoBehaviour
     private bool _isIKon;
     private bool _startcounting;
     private int anicounter;
-
-    [Header("CounterPanel")]
-    public GameObject CounterPanel;
-    public TextMeshProUGUI Countertxt;
     private void Awake()
     {
         startBt.material.SetColor("_Outline_Color", Color.black);
@@ -65,7 +61,6 @@ public class WorkoutManager : MonoBehaviour
         if (!_isIKon)
         {
             NewWorkout(currentWorkoutSO);
-            StartCoroutine(CounterCountDown());
             _isIKon = true;
         }
         else
@@ -75,44 +70,6 @@ public class WorkoutManager : MonoBehaviour
         }
     }
 
-    IEnumerator CounterCountDown()
-    {
-        CounterPanel.SetActive(true);
-        int temp = 5;
-        Countertxt.fontSize = 400;
-        Countertxt.text = temp.ToString();
-        while(temp > 0)
-        {
-            yield return new WaitForSeconds(1);
-            temp -= 1;
-            Countertxt.text = temp.ToString();
-        }
-
-        CounterPanel.SetActive(false);
-        StartCoroutine(StartPosCounter());
-        readworkoutData();
-    }
-    IEnumerator StartPosCounter()
-    {
-        CounterPanel.SetActive(true);
-        int temp = 10;
-        Countertxt.fontSize = 150;
-        Countertxt.text = "Set Youre Position Exercise will start In" + temp.ToString();
-        while (temp > 0)
-        {
-            yield return new WaitForSeconds(1);
-            temp -= 1;
-            Countertxt.text = "Set Youre Position Exercise will start In" + temp.ToString();
-            if(temp > 1)
-            {
-                WH.animator.speed = 0;
-            }
-        }
-
-        CounterPanel.SetActive(false);
-        WH.animator.speed = 1;
-       
-    }
 
     #region Circle Work button
     public void NewWorkout(WorkoutScriptableObject currentWorkout)
@@ -205,12 +162,9 @@ public class WorkoutManager : MonoBehaviour
             WH.animator.SetBool(nameofAnimations[y], false);
         }
         WH.animator.SetBool(HS.label.text, true);
-
-       
         _startcounting = true;
     }
 
-  
     public void Doneanimation()
     {
         for (int y = 0; y < nameofAnimations.Count; y++)

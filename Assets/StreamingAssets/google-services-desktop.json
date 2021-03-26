@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "370264988400-u787hk8thuhtgfd8pqtcpgsvg467sjvi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gym.motionfit",
+            "certificate_hash": "f113d4966e93c1df3b32cb6e080d13e77c80d444"
+          }
+        },
+        {
           "client_id": "370264988400-3f0iv7v8fqu4tn2p62gpi6udlai7dpla.apps.googleusercontent.com",
           "client_type": 3
         }

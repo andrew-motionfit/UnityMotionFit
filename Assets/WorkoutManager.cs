@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Michsky.UI.ModernUIPack;
 using UnityEngine.Events;
-
+using TMPro;
 public class WorkoutManager : MonoBehaviour
 {
     [SerializeField] private GameObject player = null;
@@ -26,6 +26,11 @@ public class WorkoutManager : MonoBehaviour
     private bool _isIKon;
     private bool _startcounting;
     private int anicounter;
+
+    [Header("POPUP")]
+    public GameObject popupPanel;
+    public TextMeshProUGUI PopupText;
+    public ModalWindowManager myModalWindow;
     private void Awake()
     {
         startBt.material.SetColor("_Outline_Color", Color.black);
@@ -61,16 +66,55 @@ public class WorkoutManager : MonoBehaviour
         if (!_isIKon)
         {
             NewWorkout(currentWorkoutSO);
+            StartCoroutine(startCounter());
             _isIKon = true;
         }
         else
         {
             stopWorkout(currentWorkoutSO);
+            Doneanimation();
             _isIKon = false;
         }
     }
 
+    IEnumerator startCounter()
+    {
+        Doneanimation();
+        int temp = 5;
+        popupPanel.SetActive(true);
+        PopupText.fontSize = 400;
+        PopupText.text = temp.ToString();
+        while (temp > 0)
+        {
+            yield return new WaitForSeconds(1);
+            temp -= 1;
+            PopupText.text = temp.ToString();
+           
+        }
+        readworkoutData();
+        StartCoroutine(startingPosCounter());
+    }
 
+    IEnumerator startingPosCounter()
+    {
+        int temp = 10;
+        popupPanel.SetActive(true);
+        PopupText.fontSize = 150;
+        PopupText.text = "Exercise will start in "+ temp.ToString()+" sec";
+        while (temp > 0)
+        {
+            yield return new WaitForSeconds(1);
+            temp -= 1;
+            PopupText.text = "Exercise will start in " + temp.ToString() + " sec";
+            if(temp > 1)
+            {
+                WH.animator.speed = 0;
+            }
+        }
+
+        popupPanel.SetActive(false);
+        WH.animator.speed = 1;
+    }
     #region Circle Work button
     public void NewWorkout(WorkoutScriptableObject currentWorkout)
     {
@@ -99,22 +143,60 @@ public class WorkoutManager : MonoBehaviour
     public void switchBt(int counter)
     {
         print("HERE");
+        //  myModalWindow.icon = "spriteVariable; // Change icon
+        if (counter == 2)
+        {
+            myModalWindow.titleText = "SEE DATA"; // Change title
+            myModalWindow.descriptionText = "Viewing Data will stop Exercise, Unsave Reps will be lost"; // Change desc
+        }
+        else if (counter == 1)
+        {
+            myModalWindow.titleText = "BACK TO EXERCISE"; // Change title
+            myModalWindow.descriptionText = "You can go back to Exercise and start Exercise"; // Change desc
+        }
+        else if (counter == 0)
+        {
+            myModalWindow.titleText = "PREVIEW EXERCISE"; // Change title
+            myModalWindow.descriptionText = "Preview will stop exercise, Unsave Reps will be lost"; // Change desc
+        }
+        else if (counter == 3)
+        {
+            myModalWindow.titleText = "Main Menu"; // Change title
+            myModalWindow.descriptionText = "Do you really want to go to Main Menu, Unsave Reps will be lost"; // Change desc
+        }
+        myModalWindow.onConfirm.RemoveAllListeners();
+        myModalWindow.onConfirm.AddListener(delegate { answer(counter); });
+        myModalWindow.UpdateUI(); // Update UI
+       // myModalWindow.OpenWindow(); // Open window
+        myModalWindow.AnimateWindow(); // Close/Open window automatically
+       
+    }
+
+    public void answer(int counter)
+    {
+        Doneanimation();
         switch (counter)
         {
+            case 0:
+               
+                readworkoutData();
+                break;
             case 1:
-                innerList(workout1,true);
+                innerList(workout1, true);
                 innerList(workout2, false);
                 break;
             case 2:
                 innerList(workout1, false);
                 innerList(workout2, true);
                 break;
+            case 3:
+                Application.LoadLevel(1);
+                break;
             default:
                 print("Incorrect");
                 break;
         }
     }
-
 
   
     void innerList(List<GameObject> temp , bool condition)

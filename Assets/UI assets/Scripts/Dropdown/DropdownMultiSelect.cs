@@ -106,7 +106,12 @@ namespace Michsky.UI.ModernUIPack
             {
                 GameObject go = Instantiate(itemObject, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                 go.transform.SetParent(itemParent, false);
-
+                if (GetComponent<ToggleGroup>() != null)
+                {
+                    go.GetComponent<Toggle>().group = GetComponent<ToggleGroup>();
+                    go.GetComponent<Toggle>().onValueChanged.AddListener(delegate { Camera.main.GetComponent<AvatarLoaderProfile>().CharacterSelectionDropDown(); });
+                    GameObject.FindObjectOfType<AvatarLoaderProfile>().ListofCharacter.Add(go.GetComponent<Toggle>());
+                }
                 setItemText = go.GetComponentInChildren<TextMeshProUGUI>();
                 textHelper = dropdownItems[i].itemName;
                 setItemText.text = textHelper;

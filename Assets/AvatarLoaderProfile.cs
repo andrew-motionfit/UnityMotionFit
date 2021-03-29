@@ -3,20 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Wolf3D.ReadyPlayerMe.AvatarSDK;
+using UnityEngine.UI;
 using UnityEditor;
-
+using Michsky.UI.ModernUIPack;
+using TMPro;
 public class AvatarLoaderProfile : MonoBehaviour
 {
     public GameObject warningMessage;
     public TMP_InputField LinkField;
     public GameObject FadeImage;
     public Transform AvaterParent;
-
-
+    public DropdownMultiSelect selectList;
+    public List<Toggle> ListofCharacter = new List<Toggle>();
+    public List<GameObject> ListofModel = new List<GameObject>();
     private void Start()
     {
-
-   
+       StartCoroutine(LocalDatabase.instance.getCharacter(ListofModel, FadeImage));
         
         if (PlayerPrefs.GetString("geturl","").Length > 1)
         {
@@ -26,6 +28,7 @@ public class AvatarLoaderProfile : MonoBehaviour
             avatarLoader.LoadAvatar(PlayerPrefs.GetString("geturl", ""), AvatarLoadedCallback);
         }
     }
+
     public void GetAvatar()
     {
      //  FadeImage.SetActive(true);
@@ -66,5 +69,25 @@ public class AvatarLoaderProfile : MonoBehaviour
     public void changeLevel()
     {
         Application.LoadLevel(1);
+    }
+
+    public void CharacterSelectionDropDown()
+    {
+       
+        List<GameObject> temp = new List<GameObject>();
+        for (int a = 0; a < ListofCharacter.Count; a++)
+        {
+            if (ListofCharacter[a].isOn)
+            {
+                ListofModel[a].SetActive(true);
+                LocalDatabase.instance.setCharacter(a.ToString());
+            }
+            else
+            {
+                ListofModel[a].SetActive(false);
+            }
+        }
+
+      
     }
 }

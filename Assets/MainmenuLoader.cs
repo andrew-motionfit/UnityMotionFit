@@ -6,6 +6,7 @@ public class MainmenuLoader : MonoBehaviour
 {
     public GameObject FadeImage;
     public TextMeshProUGUI profileUsertxt;
+    public List<GameObject> ListofPlayerModel = new List<GameObject>();
     // Start is called before the first frame update
     private int Levelint;
 
@@ -16,9 +17,13 @@ public class MainmenuLoader : MonoBehaviour
         profileUsertxt.text = "Hello "+PlayerPrefs.GetString("username","");
         
     }
+    private void Start()
+    {
+       StartCoroutine(LocalDatabase.instance.getCharacter(ListofPlayerModel,FadeImage));
+    }
     public void mainbt(int level)
     {
-        print("aa");
+
         FadeImage.SetActive(true);
         Invoke("changeLevel", 1);
         Levelint = level;

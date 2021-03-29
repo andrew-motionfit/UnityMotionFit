@@ -12,6 +12,7 @@ public class LocalDatabase : MonoBehaviour
    
     public string workoutData;
     public static LocalDatabase instance;
+    private DataSnapshot levelSnapshot;
 
     private void Awake()
     {
@@ -83,5 +84,53 @@ public class LocalDatabase : MonoBehaviour
         dbRef.Child("users").Child(UID).Child("DailyWorkout").Child(Exercisename).Child("calories ").SetValueAsync(Data);
         dbRef.Child("users").Child(UID).Child("WeeklyWorkout").SetValueAsync("00");
         dbRef.Child("users").Child(UID).Child("MonthlyWorkout").SetValueAsync("00");
+    }
+    
+    public IEnumerator getCharacter(List<GameObject> chars, GameObject FadeImage)
+    {
+        bool inCondition = false;
+        int temp = 0;
+        while (!inCondition)
+        {
+            Firebase.Database.DatabaseReference dbRef = Firebase.Database.FirebaseDatabase.DefaultInstance.RootReference;
+            dbRef.Child("users").Child(UID).Child("characterselect").GetValueAsync().ContinueWithOnMainThread(task => {
+                if (task.IsFaulted)
+                {
+                    // Handle the error...
+                }
+                else if (task.IsCompleted)
+                {
+                    temp = int.Parse(task.Result.Value.ToString());
+                    inCondition = true;
+                }
+            });
+            yield return null;
+        }
+
+        manageCharacter(chars, temp);
+        FadeImage.SetActive(false);
+
+    }
+    public void setCharacter(string indexer)
+    {
+        Firebase.Database.DatabaseReference dbRef = Firebase.Database.FirebaseDatabase.DefaultInstance.RootReference;
+        dbRef.Child("users").Child(UID).Child("characterselect").SetValueAsync(indexer);
+    }
+
+     void manageCharacter(List<GameObject> chars, int charValue)
+    {
+        for(int i = 0; i< chars.Count; i++)
+        {
+
+            if(charValue == i)
+            {
+                chars[i].SetActive(true);
+
+            }
+            else
+            {
+                chars[i].SetActive(false);
+            }
+        }
     }
 }

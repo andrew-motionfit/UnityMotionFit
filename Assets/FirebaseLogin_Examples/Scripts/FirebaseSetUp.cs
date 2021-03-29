@@ -19,6 +19,8 @@ public class FirebaseSetUp : MonoBehaviour
         Firebase.Database.DatabaseReference dbRef = Firebase.Database.FirebaseDatabase.DefaultInstance.RootReference;
         dbRef.Child("users").Child(UID).Child("username").SetValueAsync(username);
         dbRef.Child("users").Child(UID).Child("email").SetValueAsync(email);
+        dbRef.Child("users").Child(UID).Child("email").SetValueAsync(email);
+        dbRef.Child("users").Child(UID).Child("characterselect").SetValueAsync("0");
         dbRef.Child("users").Child(UID).Child("Input").Child("x").SetValueAsync("0,0,0");
         dbRef.Child("users").Child(UID).Child("Input").Child("y").SetValueAsync("0,0,0");
         LocalDatabase.instance.saveData(username,email,UID);

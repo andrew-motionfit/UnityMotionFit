@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38074014, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -582,7 +582,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!223 &442030953
 Canvas:
   m_ObjectHideFlags: 0
@@ -644,13 +643,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
-      propertyPath: buttonText
-      value: NEXT SET
+      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
-      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      propertyPath: buttonText
+      value: NEXT SET
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
@@ -927,27 +926,27 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 002497948b05e42278025654bc1fa53b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -6.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 002497948b05e42278025654bc1fa53b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.9
+      value: 31.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 002497948b05e42278025654bc1fa53b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -7.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 002497948b05e42278025654bc1fa53b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9787787
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 002497948b05e42278025654bc1fa53b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 002497948b05e42278025654bc1fa53b,
         type: 3}
@@ -957,7 +956,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 002497948b05e42278025654bc1fa53b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.2049201
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 002497948b05e42278025654bc1fa53b,
         type: 3}
@@ -972,13 +971,18 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 002497948b05e42278025654bc1fa53b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -23.65
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 002497948b05e42278025654bc1fa53b,
         type: 3}
       propertyPath: m_Name
       value: gym_bar_and_plates 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5320514810787415342, guid: 002497948b05e42278025654bc1fa53b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e65ebfd404010624fb315bf790f7eebe, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 002497948b05e42278025654bc1fa53b, type: 3}
 --- !u!1 &1081742398
@@ -1038,7 +1042,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: VELOCITY
+  m_text: MUSCLE IMBALANCES
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 194c956b3d864664890e731c63fd4a02, type: 2}
   m_sharedMaterial: {fileID: 21704438749789640, guid: 194c956b3d864664890e731c63fd4a02,
@@ -1192,7 +1196,6 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &1127895186
@@ -1828,7 +1831,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: REP BY REP PERFORMANCE
+  m_text: SET BY SET PERFORMANCE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 194c956b3d864664890e731c63fd4a02, type: 2}
   m_sharedMaterial: {fileID: 21704438749789640, guid: 194c956b3d864664890e731c63fd4a02,
@@ -1919,13 +1922,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
-      propertyPath: buttonText
-      value: PREVIOUS SET
+      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}
-      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      propertyPath: buttonText
+      value: PREVIOUS SET
       objectReference: {fileID: 0}
     - target: {fileID: 114170508423796382, guid: 4d478a439c81e6843ba3a9f7f2eb3d8a,
         type: 3}

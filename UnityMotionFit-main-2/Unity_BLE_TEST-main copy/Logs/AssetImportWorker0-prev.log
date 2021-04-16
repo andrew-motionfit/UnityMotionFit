@@ -1,0 +1,98 @@
+Using pre-set license
+
+ COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/2020.2.3f1/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/Users/andrewdecker/Documents/GitHub/UnityMotionFit/Unity_BLE_TEST-main copy
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+58437
+Successfully changed project path to: /Users/andrewdecker/Documents/GitHub/UnityMotionFit/Unity_BLE_TEST-main copy
+/Users/andrewdecker/Documents/GitHub/UnityMotionFit/Unity_BLE_TEST-main copy
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 34.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.2.3f1 (8ff31bc5bf5b)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2020.2.3f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/andrewdecker/Documents/GitHub/UnityMotionFit/Unity_BLE_TEST-main copy/Assets
+GfxDevice: creating device client; threaded=0
+2021-03-08 21:18:13.277 Unity[9946:227135984] Color LCD preferred device: AMD Radeon Pro 5500M (high power)
+2021-03-08 21:18:13.277 Unity[9946:227135984] Metal devices available: 2
+2021-03-08 21:18:13.277 Unity[9946:227135984] 0: AMD Radeon Pro 5500M (high power)
+2021-03-08 21:18:13.277 Unity[9946:227135984] 1: Intel(R) UHD Graphics 630 (low power)
+2021-03-08 21:18:13.277 Unity[9946:227135984] Using device AMD Radeon Pro 5500M (high power)
+Initializing Metal device caps: AMD Radeon Pro 5500M
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/2020.2.3f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/2020.2.3f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/Applications/Unity/Hub/Editor/2020.2.3f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56946
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/2020.2.3f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/2020.2.3f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/2020.2.3f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.000931 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 29.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.461 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.000383 seconds.
+Begin MonoManager ReloadAssembly
+Error: Could not load signature of Unity.Android.Logcat.AndroidLogcat:.ctor due to: Could not load file or assembly 'UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEditor.Android.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
+
+Unloading broken assembly Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll, this assembly can cause crashes in the runtime
+
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.30 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.965 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launching external process: /Applications/Unity/Hub/Editor/2020.2.3f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
+Refreshing native plugins compatible for Editor in 0.29 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 810 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 105.6 MB.
+System memory in use after: 105.1 MB.
+
+Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 1223.
+Total: 2.157855 ms (FindLiveObjects: 0.129129 ms CreateObjectMapping: 0.030646 ms MarkObjects: 1.631220 ms  DeleteObjects: 0.365815 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Bluetooth/Shatalmic/Example/FitCapTest
+  artifactKey: Guid(0120c4f03044a409ba67aff37ecffdff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Bluetooth/Shatalmic/Example/FitCapTest using Guid(0120c4f03044a409ba67aff37ecffdff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '601e770d1878d4a0b6a2a660917a2f91') in 0.003978 seconds
+  Import took 0.006237 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000294 seconds.
+  path: Assets/Bluetooth/Shatalmic/Example
+  artifactKey: Guid(a0f9eeb35659740279848981d7e33d41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Bluetooth/Shatalmic/Example using Guid(a0f9eeb35659740279848981d7e33d41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d26feb2e1b9c66815141404c8be80fe') in 0.001641 seconds
+  Import took 0.004077 seconds .
+
